@@ -1,0 +1,53 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE WRAPPER JDBC vdb_cache_querypattern
+    FOLDER = '/d01e02 - joins/2. base views'
+    DATASOURCENAME=ds_human_resources
+    SCHEMANAME='${databases.denodo_training1.folder.d01e02 - joins.folder.2.. base views.views.jdbc.vdb_cache_querypattern.SCHEMANAME}' 
+    RELATIONNAME='VDB_CACHE_QUERYPATTERN' 
+    OUTPUTSCHEMA (
+        querypatternid = 'QUERYPATTERNID' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='38', sourcetypeid='3', sourcetypename='NUMBER')  SORTABLE,
+        databasename = 'DATABASENAME' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='255', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        viewname = 'VIEWNAME' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='255', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        numconditions = 'NUMCONDITIONS' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='38', sourcetypeid='3', sourcetypename='NUMBER')  SORTABLE,
+        vdpcondition = 'VDPCONDITION' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='4000', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        vdpconditionlist = 'VDPCONDITIONLIST' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='4000', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        projectedfields = 'PROJECTEDFIELDS' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='4000', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        expirationdate = 'EXPIRATIONDATE' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='38', sourcetypeid='3', sourcetypename='NUMBER')  SORTABLE,
+        qpstatus = 'QPSTATUS' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='1', sourcetypeid='1', sourcetypename='CHAR')  SORTABLE
+    )
+    INDEX 'I_2280942358116093103243422500' CLUSTER ( 'QPSTATUS' )
+    INDEX 'I_3854082966775890768041789119' CLUSTER ( 'DATABASENAME' , 'VIEWNAME' )
+    INDEX 'I_5409127288236881046661300822' CLUSTER ( 'QUERYPATTERNID' );
+
+CREATE OR REPLACE TABLE vdb_cache_querypattern I18N us_pst (
+        querypatternid:decimal (sourcetypeid = '3', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '38'), 
+        databasename:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '255'), 
+        viewname:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '255'), 
+        numconditions:decimal (sourcetypeid = '3', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '38'), 
+        vdpcondition:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '4000'), 
+        vdpconditionlist:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '4000'), 
+        projectedfields:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '4000'), 
+        expirationdate:decimal (sourcetypeid = '3', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '38'), 
+        qpstatus:text (sourcetypeid = '1', sourcetyperadix = '10', sourcetypesize = '1')
+    )
+    FOLDER = '/d01e02 - joins/2. base views'
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD vdb_cache_querypattern(
+        I18N us_pst
+        CONSTRAINTS (
+             ADD querypatternid (any) OPT ANY
+             ADD databasename (any) OPT ANY
+             ADD viewname (any) OPT ANY
+             ADD numconditions (any) OPT ANY
+             ADD vdpcondition (any) OPT ANY
+             ADD vdpconditionlist (any) OPT ANY
+             ADD projectedfields (any) OPT ANY
+             ADD expirationdate (any) OPT ANY
+             ADD qpstatus (any) OPT ANY
+        )
+        OUTPUTLIST (databasename, expirationdate, numconditions, projectedfields, qpstatus, querypatternid, vdpcondition, vdpconditionlist, viewname
+        )
+        WRAPPER (jdbc vdb_cache_querypattern)
+    );
+

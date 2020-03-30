@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE VIEW iv_invoice_all FOLDER = '/1-connectivity/2-base views' AS SELECT bv_invoice.invoice_id AS invoice_id, bv_invoice.order_id AS order_id, bv_invoice.date_placed AS date_placed, bv_invoice.date_delivered AS date_delivered, bv_invoice.date_closed AS date_closed, bv_invoice.first_name AS first_name, bv_invoice.last_name AS last_name, bv_invoice.email AS email, bv_invoice.address AS address, bv_invoice.country AS country, bv_invoice.postal_code AS postal_code, bv_invoice.phone AS phone, bv_invoice.amount AS amount, cast('timestamp', bv_invoice.date_invoice) AS date_invoice FROM bv_invoice;
+
+ALTER VIEW iv_invoice_all
+ LAYOUT (bv_invoice = [20, 20, 200, 306]);
+

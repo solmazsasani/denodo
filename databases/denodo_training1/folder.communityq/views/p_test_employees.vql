@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE VIEW p_test_employees FOLDER = '/communityq' AS SELECT test_employees.employee_id AS employee_id, test_employees.first_name AS first_name, test_employees.last_name AS last_name, test_employees.email AS email, test_employees.phone_number AS phone_number, test_employees.hire_date AS hire_date, test_employees.job_id AS job_id, test_employees.salary AS salary, test_employees.commission_pct AS commission_pct, test_employees.manager_id AS manager_id, test_employees.department_id AS department_id, 1234 AS "select", 7 AS "gs", currentdate, "1hi", "24solmaz", "1gs", test FROM test_employees USING PARAMETERS ( currentdate : localdate current_date(), "1hi" : text 'hi', "24solmaz" : text 111, "1gs" : text 32, test : text substring('solmaz', 1));
+
+ALTER VIEW p_test_employees
+ LAYOUT (test_employees = [20, 20, 243, 246]);
+

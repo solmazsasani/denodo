@@ -1,0 +1,61 @@
+﻿CREATE OR REPLACE WRAPPER JSON test_sales_search
+    FOLDER = '/1-connectivity/1-data sources'
+    DATASOURCENAME=ds_sales_search
+    TUPLEROOT '/JSONFile'
+    OUTPUTSCHEMA (jsonfile = 'JSONFile' : REGISTER OF (
+        salesdata = 'salesData' : ARRAY OF (
+            salesdata = 'salesData' : REGISTER OF (
+                productid = 'productId' : 'java.lang.String',
+                sales = 'sales' : ARRAY OF (
+                    sales = 'sales' : REGISTER OF (
+                        saleid = 'saleId' : 'java.lang.String',
+                        productid = 'productId' : 'java.lang.String',
+                        employeeid = 'employeeId' : 'java.lang.String',
+                        customerid = 'customerId' : 'java.lang.String',
+                        saledate = 'saleDate' : 'java.lang.String',
+                        bundleamount = 'bundleAmount' : 'java.lang.String',
+                        productsaleprice = 'productSalePrice' : 'java.lang.String',
+                        totalprice = 'totalPrice' : 'java.lang.String'
+                    )
+                )
+            )
+        )
+    )
+    );
+
+CREATE OR REPLACE TYPE ds_sales_search_salesdata_salesdata_sales_sales AS REGISTER OF (saleid:text, productid:text, employeeid:text, customerid:text, saledate:text, bundleamount:text, productsaleprice:text, totalprice:text);
+
+CREATE OR REPLACE TYPE ds_sales_search_salesdata_salesdata_sales AS ARRAY OF ds_sales_search_salesdata_salesdata_sales_sales;
+
+CREATE OR REPLACE TYPE ds_sales_search_salesdata_salesdata AS REGISTER OF (productid:text, sales:ds_sales_search_salesdata_salesdata_sales);
+
+CREATE OR REPLACE TYPE ds_sales_search_salesdata AS ARRAY OF ds_sales_search_salesdata_salesdata;
+
+CREATE OR REPLACE TABLE test_sales_search I18N gb (
+        salesdata:ds_sales_search_salesdata
+    )
+    FOLDER = '/1-connectivity/1-data sources'
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD test_sales_search(
+        I18N gb
+        CONSTRAINTS (
+             ADD salesdata NOS ZERO ()
+             ADD salesdata NOS ZERO ()
+             ADD salesdata.productid NOS ZERO ()
+             ADD salesdata.sales NOS ZERO ()
+             ADD salesdata.sales NOS ZERO ()
+             ADD salesdata.sales.saleid NOS ZERO ()
+             ADD salesdata.sales.productid NOS ZERO ()
+             ADD salesdata.sales.employeeid NOS ZERO ()
+             ADD salesdata.sales.customerid NOS ZERO ()
+             ADD salesdata.sales.saledate NOS ZERO ()
+             ADD salesdata.sales.bundleamount NOS ZERO ()
+             ADD salesdata.sales.productsaleprice NOS ZERO ()
+             ADD salesdata.sales.totalprice NOS ZERO ()
+        )
+        OUTPUTLIST (salesdata
+        )
+        WRAPPER (json test_sales_search)
+    );
+

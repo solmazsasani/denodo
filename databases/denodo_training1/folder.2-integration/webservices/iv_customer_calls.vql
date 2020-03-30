@@ -1,0 +1,41 @@
+﻿CREATE OR REPLACE REST WEBSERVICE iv_customer_calls
+    CONNECTION (
+        CHUNKSIZE = 1000
+        CHUNKTIMEOUT = 90000
+        QUERYTIMEOUT = 900000
+        POOLENABLED = true
+        POOLINITSIZE = 0
+        POOLMAXACTIVE = 30
+    )
+    DEFAULTREPRESENTATION = HTML
+    SUPPORTEDREPRESENTATIONS (HTML, XML, JSON)
+    RESOURCES (
+        VIEW iv_customer_calls FIELDS (
+            id : 'decimal', 
+            customer_code_internal : 'text', 
+            first_name : 'text', 
+            last_name : 'text', 
+            email : 'text', 
+            phone : 'text', 
+            main_address : 'text', 
+            main_postcode : 'text', 
+            main_country : 'text', 
+            registered_date : 'timestamp', 
+            call_id : 'int', 
+            location_id : 'int', 
+            problem_code : 'int', 
+            status_code : 'int', 
+            date_ticket_issued : 'timestamp', 
+            date_call_received : 'timestamp', 
+            other_details : 'text', 
+            caller_phone : 'text', 
+            case_id : 'int', 
+            agent_id : 'int', 
+            customer_code : 'text'
+        )
+    )
+    OPTIONS ( NULLVALUESASEMPTYXMLELEMENTS = false
+        PROCESS_FUNCTIONS_IN_SELECT_PARAMETER = true ) 
+    OPENAPI2 ( API_VERSION = '1.0.0' ) 
+    FOLDER = '/2-integration';
+

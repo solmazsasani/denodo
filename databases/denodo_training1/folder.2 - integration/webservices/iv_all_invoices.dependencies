@@ -1,0 +1,9 @@
+﻿/databases/denodo_training1/folder.2 - integration/2 - integration.vql
+/databases/denodo_training1/folder.1 - connectivity/1 - connectivity.vql
+/databases/denodo_training1/folder.1 - connectivity/folder.2 - base views/2 - base views.vql
+/databases/denodo_training1/folder.1 - connectivity/folder.1 - data sources/1 - data sources.vql
+/databases/denodo_training1/folder.1 - connectivity/folder.1 - data sources/datasources/custom/ds_invoices.vql
+/databases/denodo_training1/folder.1 - connectivity/folder.2 - base views/views/bv_invoices.vql
+/databases/denodo_training1/folder.1 - connectivity/folder.1 - data sources/datasources/df/ds_old_invoices.vql
+/databases/denodo_training1/folder.1 - connectivity/folder.2 - base views/views/bv_old_invoices.vql
+/databases/denodo_training1/folder.2 - integration/views/iv_all_invoices.vql

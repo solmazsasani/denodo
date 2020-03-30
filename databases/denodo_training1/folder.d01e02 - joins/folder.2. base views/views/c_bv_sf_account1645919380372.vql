@@ -1,0 +1,221 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE WRAPPER JDBC c_bv_sf_account1645919380372
+    FOLDER = '/d01e02 - joins/2. base views'
+    DATASOURCENAME=ds_human_resources
+    SCHEMANAME='${databases.denodo_training1.folder.d01e02 - joins.folder.2.. base views.views.jdbc.c_bv_sf_account1645919380372.SCHEMANAME}' 
+    RELATIONNAME='C_BV_SF_ACCOUNT1645919380372' 
+    OUTPUTSCHEMA (
+        id = 'ID' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='4000', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        isdeleted = 'ISDELETED' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='4000', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        masterrecordid = 'MASTERRECORDID' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='4000', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        field_0 = 'FIELD_0' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='4000', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        field_1 = 'FIELD_1' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='4000', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        parentid = 'PARENTID' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='4000', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        billingstreet = 'BILLINGSTREET' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='4000', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        billingcity = 'BILLINGCITY' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='4000', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        billingstate = 'BILLINGSTATE' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='4000', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        billingpostalcode = 'BILLINGPOSTALCODE' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='4000', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        billingcountry = 'BILLINGCOUNTRY' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='4000', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        billinglatitude = 'BILLINGLATITUDE' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='4000', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        billinglongitude = 'BILLINGLONGITUDE' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='4000', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        billingaddress = 'BILLINGADDRESS' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='4000', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        shippingstreet = 'SHIPPINGSTREET' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='4000', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        shippingcity = 'SHIPPINGCITY' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='4000', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        shippingstate = 'SHIPPINGSTATE' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='4000', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        shippingpostalcode = 'SHIPPINGPOSTALCODE' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='4000', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        shippingcountry = 'SHIPPINGCOUNTRY' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='4000', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        shippinglatitude = 'SHIPPINGLATITUDE' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='4000', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        shippinglongitude = 'SHIPPINGLONGITUDE' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='4000', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        shippingaddress = 'SHIPPINGADDRESS' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='4000', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        phone = 'PHONE' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='4000', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        fax = 'FAX' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='4000', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        accountnumber = 'ACCOUNTNUMBER' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='4000', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        website = 'WEBSITE' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='4000', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        photourl = 'PHOTOURL' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='4000', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        sic = 'SIC' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='4000', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        industry = 'INDUSTRY' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='4000', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        annualrevenue = 'ANNUALREVENUE' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='4000', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        numberofemployees = 'NUMBEROFEMPLOYEES' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='4000', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        ownership = 'OWNERSHIP' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='4000', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        tickersymbol = 'TICKERSYMBOL' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='4000', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        description = 'DESCRIPTION' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='4000', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        rating = 'RATING' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='4000', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        site = 'SITE' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='4000', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        ownerid = 'OWNERID' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='4000', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        createddate = 'CREATEDDATE' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='4000', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        createdbyid = 'CREATEDBYID' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='4000', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        lastmodifieddate = 'LASTMODIFIEDDATE' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='4000', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        lastmodifiedbyid = 'LASTMODIFIEDBYID' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='4000', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        systemmodstamp = 'SYSTEMMODSTAMP' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='4000', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        lastactivitydate = 'LASTACTIVITYDATE' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='4000', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        lastvieweddate = 'LASTVIEWEDDATE' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='4000', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        lastreferenceddate = 'LASTREFERENCEDDATE' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='4000', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        jigsaw = 'JIGSAW' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='4000', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        jigsawcompanyid = 'JIGSAWCOMPANYID' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='4000', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        cleanstatus = 'CLEANSTATUS' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='4000', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        accountsource = 'ACCOUNTSOURCE' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='4000', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        dunsnumber = 'DUNSNUMBER' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='4000', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        tradestyle = 'TRADESTYLE' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='4000', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        naicscode = 'NAICSCODE' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='4000', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        naicsdesc = 'NAICSDESC' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='4000', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        yearstarted = 'YEARSTARTED' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='4000', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        sicdesc = 'SICDESC' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='4000', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        dandbcompanyid = 'DANDBCOMPANYID' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='4000', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        customerpriority__c = 'CUSTOMERPRIORITY__C' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='4000', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        sla__c = 'SLA__C' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='4000', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        active__c = 'ACTIVE__C' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='4000', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        numberoflocations__c = 'NUMBEROFLOCATIONS__C' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='4000', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        upsellopportunity__c = 'UPSELLOPPORTUNITY__C' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='4000', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        slaserialnumber__c = 'SLASERIALNUMBER__C' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='4000', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        slaexpirationdate__c = 'SLAEXPIRATIONDATE__C' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='4000', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        last_creation_date = 'LAST_CREATION_DATE' :'java.time.OffsetDateTime' (OPT) (sourcetypedecimals='6', sourcetyperadix='10', sourcetypesize='13', sourcetypeid='-101', sourcetypename='TIMESTAMP(6) WITH TIME ZONE')  NOT SORTABLE,
+        expirationdate = 'EXPIRATIONDATE' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='38', sourcetypeid='3', sourcetypename='NUMBER')  SORTABLE,
+        rowstatus = 'ROWSTATUS' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='255', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE
+    );
+
+CREATE OR REPLACE TABLE c_bv_sf_account1645919380372 I18N us_pst (
+        id:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '4000'), 
+        isdeleted:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '4000'), 
+        masterrecordid:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '4000'), 
+        field_0:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '4000'), 
+        field_1:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '4000'), 
+        parentid:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '4000'), 
+        billingstreet:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '4000'), 
+        billingcity:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '4000'), 
+        billingstate:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '4000'), 
+        billingpostalcode:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '4000'), 
+        billingcountry:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '4000'), 
+        billinglatitude:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '4000'), 
+        billinglongitude:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '4000'), 
+        billingaddress:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '4000'), 
+        shippingstreet:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '4000'), 
+        shippingcity:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '4000'), 
+        shippingstate:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '4000'), 
+        shippingpostalcode:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '4000'), 
+        shippingcountry:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '4000'), 
+        shippinglatitude:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '4000'), 
+        shippinglongitude:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '4000'), 
+        shippingaddress:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '4000'), 
+        phone:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '4000'), 
+        fax:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '4000'), 
+        accountnumber:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '4000'), 
+        website:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '4000'), 
+        photourl:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '4000'), 
+        sic:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '4000'), 
+        industry:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '4000'), 
+        annualrevenue:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '4000'), 
+        numberofemployees:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '4000'), 
+        ownership:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '4000'), 
+        tickersymbol:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '4000'), 
+        description:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '4000'), 
+        rating:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '4000'), 
+        site:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '4000'), 
+        ownerid:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '4000'), 
+        createddate:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '4000'), 
+        createdbyid:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '4000'), 
+        lastmodifieddate:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '4000'), 
+        lastmodifiedbyid:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '4000'), 
+        systemmodstamp:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '4000'), 
+        lastactivitydate:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '4000'), 
+        lastvieweddate:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '4000'), 
+        lastreferenceddate:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '4000'), 
+        jigsaw:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '4000'), 
+        jigsawcompanyid:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '4000'), 
+        cleanstatus:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '4000'), 
+        accountsource:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '4000'), 
+        dunsnumber:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '4000'), 
+        tradestyle:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '4000'), 
+        naicscode:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '4000'), 
+        naicsdesc:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '4000'), 
+        yearstarted:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '4000'), 
+        sicdesc:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '4000'), 
+        dandbcompanyid:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '4000'), 
+        customerpriority__c:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '4000'), 
+        sla__c:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '4000'), 
+        active__c:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '4000'), 
+        numberoflocations__c:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '4000'), 
+        upsellopportunity__c:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '4000'), 
+        slaserialnumber__c:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '4000'), 
+        slaexpirationdate__c:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '4000'), 
+        last_creation_date:timestamptz (sourcetypeid = '2014', sourcetyperadix = '10', sourcetypedecimals = '6', sourcetypesize = '13'), 
+        expirationdate:decimal (sourcetypeid = '3', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '38'), 
+        rowstatus:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '255')
+    )
+    FOLDER = '/d01e02 - joins/2. base views'
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD c_bv_sf_account1645919380372(
+        I18N us_pst
+        CONSTRAINTS (
+             ADD id (any) OPT ANY
+             ADD isdeleted (any) OPT ANY
+             ADD masterrecordid (any) OPT ANY
+             ADD field_0 (any) OPT ANY
+             ADD field_1 (any) OPT ANY
+             ADD parentid (any) OPT ANY
+             ADD billingstreet (any) OPT ANY
+             ADD billingcity (any) OPT ANY
+             ADD billingstate (any) OPT ANY
+             ADD billingpostalcode (any) OPT ANY
+             ADD billingcountry (any) OPT ANY
+             ADD billinglatitude (any) OPT ANY
+             ADD billinglongitude (any) OPT ANY
+             ADD billingaddress (any) OPT ANY
+             ADD shippingstreet (any) OPT ANY
+             ADD shippingcity (any) OPT ANY
+             ADD shippingstate (any) OPT ANY
+             ADD shippingpostalcode (any) OPT ANY
+             ADD shippingcountry (any) OPT ANY
+             ADD shippinglatitude (any) OPT ANY
+             ADD shippinglongitude (any) OPT ANY
+             ADD shippingaddress (any) OPT ANY
+             ADD phone (any) OPT ANY
+             ADD fax (any) OPT ANY
+             ADD accountnumber (any) OPT ANY
+             ADD website (any) OPT ANY
+             ADD photourl (any) OPT ANY
+             ADD sic (any) OPT ANY
+             ADD industry (any) OPT ANY
+             ADD annualrevenue (any) OPT ANY
+             ADD numberofemployees (any) OPT ANY
+             ADD ownership (any) OPT ANY
+             ADD tickersymbol (any) OPT ANY
+             ADD description (any) OPT ANY
+             ADD rating (any) OPT ANY
+             ADD site (any) OPT ANY
+             ADD ownerid (any) OPT ANY
+             ADD createddate (any) OPT ANY
+             ADD createdbyid (any) OPT ANY
+             ADD lastmodifieddate (any) OPT ANY
+             ADD lastmodifiedbyid (any) OPT ANY
+             ADD systemmodstamp (any) OPT ANY
+             ADD lastactivitydate (any) OPT ANY
+             ADD lastvieweddate (any) OPT ANY
+             ADD lastreferenceddate (any) OPT ANY
+             ADD jigsaw (any) OPT ANY
+             ADD jigsawcompanyid (any) OPT ANY
+             ADD cleanstatus (any) OPT ANY
+             ADD accountsource (any) OPT ANY
+             ADD dunsnumber (any) OPT ANY
+             ADD tradestyle (any) OPT ANY
+             ADD naicscode (any) OPT ANY
+             ADD naicsdesc (any) OPT ANY
+             ADD yearstarted (any) OPT ANY
+             ADD sicdesc (any) OPT ANY
+             ADD dandbcompanyid (any) OPT ANY
+             ADD customerpriority__c (any) OPT ANY
+             ADD sla__c (any) OPT ANY
+             ADD active__c (any) OPT ANY
+             ADD numberoflocations__c (any) OPT ANY
+             ADD upsellopportunity__c (any) OPT ANY
+             ADD slaserialnumber__c (any) OPT ANY
+             ADD slaexpirationdate__c (any) OPT ANY
+             ADD last_creation_date (any) OPT ANY
+             ADD expirationdate (any) OPT ANY
+             ADD rowstatus (any) OPT ANY
+        )
+        OUTPUTLIST (accountnumber, accountsource, active__c, annualrevenue, billingaddress, billingcity, billingcountry, billinglatitude, billinglongitude, billingpostalcode, billingstate, billingstreet, cleanstatus, createdbyid, createddate, customerpriority__c, dandbcompanyid, description, dunsnumber, expirationdate, fax, field_0, field_1, id, industry, isdeleted, jigsaw, jigsawcompanyid, last_creation_date, lastactivitydate, lastmodifiedbyid, lastmodifieddate, lastreferenceddate, lastvieweddate, masterrecordid, naicscode, naicsdesc, numberofemployees, numberoflocations__c, ownerid, ownership, parentid, phone, photourl, rating, rowstatus, shippingaddress, shippingcity, shippingcountry, shippinglatitude, shippinglongitude, shippingpostalcode, shippingstate, shippingstreet, sic, sicdesc, site, sla__c, slaexpirationdate__c, slaserialnumber__c, systemmodstamp, tickersymbol, tradestyle, upsellopportunity__c, website, yearstarted
+        )
+        WRAPPER (jdbc c_bv_sf_account1645919380372)
+    );
+

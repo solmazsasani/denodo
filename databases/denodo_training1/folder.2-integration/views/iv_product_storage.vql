@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE VIEW iv_product_storage FOLDER = '/2-integration' AS SELECT bv_product.productid AS productid, bv_product.productname AS productname, bv_wo_storages.id AS id, bv_wo_storages.city AS city, count(*) AS amount FROM (bv_product AS bv_product INNER JOIN bv_wo_stock AS bv_wo_stock ON bv_product.productid = bv_wo_stock.product_id ) INNER JOIN bv_wo_storages AS bv_wo_storages ON bv_wo_stock.storage_id = bv_wo_storages.id  GROUP BY bv_product.productid, bv_product.productname, bv_wo_storages.id, bv_wo_storages.city;
+
+ALTER VIEW iv_product_storage
+ LAYOUT (bv_product = [93, 296, 200, 225], bv_wo_stock = [422, 164, 200, 106], bv_wo_storages = [820, 210, 200, 186]);
+

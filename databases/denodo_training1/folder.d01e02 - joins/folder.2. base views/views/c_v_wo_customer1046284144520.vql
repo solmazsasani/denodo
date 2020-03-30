@@ -1,0 +1,59 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE WRAPPER JDBC c_v_wo_customer1046284144520
+    FOLDER = '/d01e02 - joins/2. base views'
+    DATASOURCENAME=ds_human_resources
+    SCHEMANAME='${databases.denodo_training1.folder.d01e02 - joins.folder.2.. base views.views.jdbc.c_v_wo_customer1046284144520.SCHEMANAME}' 
+    RELATIONNAME='C_V_WO_CUSTOMER1046284144520' 
+    OUTPUTSCHEMA (
+        id = 'ID' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='20', sourcetyperadix='10', sourcetypesize='38', sourcetypeid='3', sourcetypename='NUMBER')  SORTABLE,
+        customer_code_internal = 'CUSTOMER_CODE_INTERNAL' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='20', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        first_name = 'FIRST_NAME' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='50', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        last_name = 'LAST_NAME' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='100', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        email = 'EMAIL' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='50', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        phone = 'PHONE' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='20', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        main_address = 'MAIN_ADDRESS' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='200', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        main_postcode = 'MAIN_POSTCODE' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='20', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        main_country = 'MAIN_COUNTRY' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='100', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        registered_date = 'REGISTERED_DATE' :'java.time.OffsetDateTime' (OPT) (sourcetypedecimals='6', sourcetyperadix='10', sourcetypesize='13', sourcetypeid='-101', sourcetypename='TIMESTAMP(6) WITH TIME ZONE')  NOT SORTABLE,
+        expirationdate = 'EXPIRATIONDATE' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='38', sourcetypeid='3', sourcetypename='NUMBER')  SORTABLE,
+        rowstatus = 'ROWSTATUS' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='255', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE
+    );
+
+CREATE OR REPLACE TABLE c_v_wo_customer1046284144520 I18N us_pst (
+        id:decimal (sourcetypeid = '3', sourcetyperadix = '10', sourcetypedecimals = '20', sourcetypesize = '38'), 
+        customer_code_internal:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '20'), 
+        first_name:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '50'), 
+        last_name:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '100'), 
+        email:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '50'), 
+        phone:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '20'), 
+        main_address:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '200'), 
+        main_postcode:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '20'), 
+        main_country:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '100'), 
+        registered_date:timestamptz (sourcetypeid = '2014', sourcetyperadix = '10', sourcetypedecimals = '6', sourcetypesize = '13'), 
+        expirationdate:decimal (sourcetypeid = '3', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '38'), 
+        rowstatus:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '255')
+    )
+    FOLDER = '/d01e02 - joins/2. base views'
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD c_v_wo_customer1046284144520(
+        I18N us_pst
+        CONSTRAINTS (
+             ADD id (any) OPT ANY
+             ADD customer_code_internal (any) OPT ANY
+             ADD first_name (any) OPT ANY
+             ADD last_name (any) OPT ANY
+             ADD email (any) OPT ANY
+             ADD phone (any) OPT ANY
+             ADD main_address (any) OPT ANY
+             ADD main_postcode (any) OPT ANY
+             ADD main_country (any) OPT ANY
+             ADD registered_date (any) OPT ANY
+             ADD expirationdate (any) OPT ANY
+             ADD rowstatus (any) OPT ANY
+        )
+        OUTPUTLIST (customer_code_internal, email, expirationdate, first_name, id, last_name, main_address, main_country, main_postcode, phone, registered_date, rowstatus
+        )
+        WRAPPER (jdbc c_v_wo_customer1046284144520)
+    );
+

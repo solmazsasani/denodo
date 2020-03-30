@@ -1,0 +1,30 @@
+﻿CREATE OR REPLACE WRAPPER XML bv_sales_search
+    FOLDER = '/1-connectivity/2-base views'
+    DATASOURCENAME=ds_sales_search
+    TUPLEROOT 'salesDataList'
+    OUTPUTSCHEMA (salesdatalist = 'salesDataList' : REGISTER OF (
+        cid = 'CID' : 'java.lang.String' (OBL) (DEFAULTVALUE='1') EXTERN,
+        pid = 'PID' : 'java.lang.String' (OBL) (DEFAULTVALUE='1') EXTERN,
+        eid = 'EID' : 'java.lang.String' (OBL) (DEFAULTVALUE='1') EXTERN
+    )
+    );
+
+CREATE OR REPLACE TABLE bv_sales_search I18N us_pst (
+        cid:text (extern), 
+        pid:text (extern), 
+        eid:text (extern)
+    )
+    FOLDER = '/1-connectivity/2-base views'
+    CACHE OFF
+    BATCHSIZEINCACHE DEFAULT
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD bv_sales_search(
+        I18N us_pst
+        CONSTRAINTS (
+             ADD cid (=) OPT ONE
+             ADD eid (=) OPT ONE
+             ADD pid (=) OPT ONE
+        )
+        WRAPPER (xml bv_sales_search)
+    );
+

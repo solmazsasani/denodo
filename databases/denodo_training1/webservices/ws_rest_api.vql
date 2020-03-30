@@ -1,0 +1,76 @@
+﻿CREATE OR REPLACE REST WEBSERVICE ws_rest_api
+    CONNECTION (
+        CHUNKSIZE = 1000
+        CHUNKTIMEOUT = 90000
+        QUERYTIMEOUT = 900000
+        POOLENABLED = true
+        POOLINITSIZE = 0
+        POOLMAXACTIVE = 30
+    )
+    DEFAULTREPRESENTATION = HTML
+    SUPPORTEDREPRESENTATIONS (HTML, XML, JSON)    AUTHENTICATION (BASIC VDP )
+
+    RESOURCES (
+        VIEW bv_wo_customer FIELDS (
+            id : 'decimal', 
+            customer_code_internal : 'text', 
+            first_name : 'text', 
+            last_name : 'text', 
+            email : 'text', 
+            phone : 'text', 
+            main_address : 'text', 
+            main_postcode : 'text', 
+            main_country : 'text', 
+            registered_date : 'timestamp'
+        ),
+        VIEW bv_hr_employees FIELDS (
+            employee_id : 'int', 
+            first_name : 'text', 
+            last_name : 'text', 
+            email : 'text', 
+            phone_number : 'text', 
+            hire_date : 'timestamp', 
+            job_id : 'text', 
+            salary : 'decimal', 
+            commission_pct : 'decimal', 
+            manager_id : 'int', 
+            department_id : 'int'
+        ),
+        VIEW bv_wo_orders FIELDS (
+            id : 'decimal', 
+            customer_code : 'text', 
+            status : 'text', 
+            date_placed : 'timestamp', 
+            date_delivered : 'timestamp', 
+            date_closed : 'timestamp'
+        ),
+        VIEW bv_product FIELDS (
+            code : 'text', 
+            description : 'text', 
+            warnings : 'text', 
+            numresults : 'text', 
+            productid : 'int', 
+            productname : 'text', 
+            productprice : 'float', 
+            category : 'getallproductdetails_category', 
+            characteristics : 'getallproductdetails_characteristics', 
+            accessories : 'getallproductdetails_accessories'
+        ),
+        VIEW bv_sales_all FIELDS (
+            productid_0 : 'text', 
+            saleid : 'text', 
+            productid : 'text', 
+            employeeid : 'text', 
+            customerid : 'text', 
+            saledate : 'text', 
+            bundleamount : 'text', 
+            productsaleprice : 'text', 
+            totalprice : 'text'
+        )
+    )
+    ASSOCIATIONS ( a_employee_sales )
+    OPTIONS ( NULLVALUESASEMPTYXMLELEMENTS = false
+        MAX_ROWS_PER_PAGE = 10
+        PROCESS_FUNCTIONS_IN_SELECT_PARAMETER = true ) 
+    OPENAPI2 ( API_VERSION = '1.0.0' ) ;
+

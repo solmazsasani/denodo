@@ -1,0 +1,32 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE WRAPPER JDBC vdb_cache_viewname
+    FOLDER = '/d01e02 - joins/2. base views'
+    DATASOURCENAME=ds_human_resources
+    SCHEMANAME='${databases.denodo_training1.folder.d01e02 - joins.folder.2.. base views.views.jdbc.vdb_cache_viewname.SCHEMANAME}' 
+    RELATIONNAME='VDB_CACHE_VIEWNAME' 
+    OUTPUTSCHEMA (
+        databasename = 'DATABASENAME' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='255', sourcetypeid='12', sourcetypename='VARCHAR2')  NOT NULL SORTABLE,
+        viewname = 'VIEWNAME' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='255', sourcetypeid='12', sourcetypename='VARCHAR2')  NOT NULL SORTABLE
+    )
+    CONSTRAINT 'C_228914676529359123860988_PK' PRIMARY KEY ( 'DATABASENAME' , 'VIEWNAME' )
+    INDEX 'C_228914676529359123860988_PK' CLUSTER UNIQUE PRIMARY ( 'DATABASENAME' , 'VIEWNAME' );
+
+CREATE OR REPLACE TABLE vdb_cache_viewname I18N us_pst (
+        databasename:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '255'), 
+        viewname:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '255')
+    )
+    FOLDER = '/d01e02 - joins/2. base views'
+    CONSTRAINT 'C_228914676529359123860988_PK' PRIMARY KEY ( 'databasename' , 'viewname' )
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD vdb_cache_viewname(
+        I18N us_pst
+        CONSTRAINTS (
+             ADD databasename (any) OPT ANY
+             ADD viewname (any) OPT ANY
+        )
+        OUTPUTLIST (databasename, viewname
+        )
+        WRAPPER (jdbc vdb_cache_viewname)
+    );
+

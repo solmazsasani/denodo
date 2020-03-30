@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE VIEW dv_user_roles FOLDER = '/den60edud02e01 - ldap sources/2. integration' AS SELECT dv_user1.displayname AS displayname, dv_user1.samaccountname AS samaccountname, dv_user1.userprincipalname AS userprincipalname, dv_user1.memberof AS memberof, bv_group1.cn AS cn, bv_group1.distinguishedname AS distinguishedname, bv_group1.objectcategory AS objectcategory FROM dv_user1 AS dv_user1 INNER JOIN bv_group1 AS bv_group1 ON dv_user1.memberof = bv_group1.distinguishedname ;
+
+ALTER VIEW dv_user_roles
+ LAYOUT (dv_user1 = [107, 189, 200, 106], bv_group1 = [503, 221, 200, 86]);
+

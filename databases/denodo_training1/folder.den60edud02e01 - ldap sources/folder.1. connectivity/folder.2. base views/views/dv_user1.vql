@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE VIEW dv_user1 FOLDER = '/den60edud02e01 - ldap sources/1. connectivity/2. base views' AS SELECT displayname, samaccountname, userprincipalname, memberof FROM FLATTEN bv_user1 AS v ( v.memberof);
+
+ALTER VIEW dv_user1
+ LAYOUT (bv_user1 = [20, 20, 274, 126]);
+

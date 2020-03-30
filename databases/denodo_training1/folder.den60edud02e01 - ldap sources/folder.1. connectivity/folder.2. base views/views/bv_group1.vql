@@ -1,0 +1,32 @@
+﻿CREATE OR REPLACE WRAPPER LDAP bv_group1
+    FOLDER = '/den60edud02e01 - ldap sources/1. connectivity/2. base views'
+    DATASOURCENAME=denodotraining
+    LDAPEXPRESSION='(&(objectclass=group))'   
+    RECURSIVESEARCH=TRUE
+    SINGLE-VALUE=FALSE
+    OUTPUTSCHEMA (
+        cn = 'cn' : 'java.lang.String',
+        distinguishedname = 'distinguishedName' : 'java.lang.String',
+        objectcategory = 'objectCategory' : 'java.lang.String'
+    );
+
+CREATE OR REPLACE TABLE bv_group1 I18N us_pst (
+        cn:text, 
+        distinguishedname:text, 
+        objectcategory:text
+    )
+    FOLDER = '/den60edud02e01 - ldap sources/1. connectivity/2. base views'
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD bv_group1(
+        I18N us_pst
+        CONSTRAINTS (
+             ADD cn NOS ZERO ()
+             ADD distinguishedname NOS ZERO ()
+             ADD objectcategory NOS ZERO ()
+        )
+        OUTPUTLIST (cn, distinguishedname, objectcategory
+        )
+        WRAPPER (ldap bv_group1)
+    );
+

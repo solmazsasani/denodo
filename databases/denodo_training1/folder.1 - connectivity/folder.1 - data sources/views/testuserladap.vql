@@ -1,0 +1,36 @@
+﻿CREATE OR REPLACE WRAPPER JDBC testuserladap
+    FOLDER = '/1 - connectivity/1 - data sources'
+    DATASOURCENAME=denodo_ds_test
+    SQLSENTENCE='DESC user testuser;'   
+    OUTPUTSCHEMA (
+        name = 'name' :'java.lang.String' (sourcetypedecimals='0', sourcetypesize='65536', sourcetypeid='12', sourcetypename='VARCHAR')  NOT NULL SORTABLE NOT UPDATEABLE,
+        description = 'description' :'java.lang.String' (sourcetypedecimals='0', sourcetypesize='65536', sourcetypeid='12', sourcetypename='VARCHAR')  NOT NULL SORTABLE NOT UPDATEABLE,
+        admin = 'admin' :'java.lang.String' (sourcetypedecimals='0', sourcetypesize='65536', sourcetypeid='12', sourcetypename='VARCHAR')  NOT NULL SORTABLE NOT UPDATEABLE
+    )
+    SOURCECONFIGURATION (
+        delegatesqlsentenceassubquery = false,
+        supportsdistributedtransactions = false,
+        datainorderfieldslist = ()
+    );
+
+CREATE OR REPLACE TABLE testuserladap I18N gb (
+        name:text (sourcetypeid = '12', sourcetypedecimals = '0', sourcetypesize = '65536'), 
+        description:text (sourcetypeid = '12', sourcetypedecimals = '0', sourcetypesize = '65536'), 
+        admin:text (sourcetypeid = '12', sourcetypedecimals = '0', sourcetypesize = '65536')
+    )
+    FOLDER = '/1 - connectivity/1 - data sources'
+    CACHE OFF
+    BATCHSIZEINCACHE DEFAULT
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD testuserladap(
+        I18N gb
+        CONSTRAINTS (
+             ADD name NOS ZERO ()
+             ADD description NOS ZERO ()
+             ADD admin NOS ZERO ()
+        )
+        OUTPUTLIST (admin, description, name
+        )
+        WRAPPER (jdbc testuserladap)
+    );
+

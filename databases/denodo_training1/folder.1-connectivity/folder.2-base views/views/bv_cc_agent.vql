@@ -1,0 +1,34 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE WRAPPER JDBC agent
+    FOLDER = '/1-connectivity/2-base views'
+    DATASOURCENAME=ds_call_center
+    SCHEMANAME='${databases.denodo_training1.folder.1-connectivity.folder.2-base views.views.jdbc.agent.SCHEMANAME}' 
+    RELATIONNAME='AGENT' 
+    OUTPUTSCHEMA (
+        agent_id = 'AGENT_ID' :'java.math.BigDecimal' (OPT) (sourcetyperadix='10', sourcetypeid='3', sourcetypename='NUMBER')  NOT NULL SORTABLE,
+        agent_code = 'AGENT_CODE' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='13', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        agent_name = 'AGENT_NAME' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='14', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE
+    );
+
+CREATE OR REPLACE TABLE bv_cc_agent I18N us_pst (
+        agent_id:decimal (sourcetypeid = '3', sourcetyperadix = '10', description = 'test agent_id'), 
+        agent_code:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '13'), 
+        agent_name:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '14')
+    )
+    FOLDER = '/1-connectivity/2-base views'
+    DESCRIPTION = 'test'
+    CACHE FULL
+    BATCHSIZEINCACHE DEFAULT
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD agent(
+        I18N us_pst
+        CONSTRAINTS (
+             ADD agent_id (any) OPT ANY
+             ADD agent_code (any) OPT ANY
+             ADD agent_name (any) OPT ANY
+        )
+        OUTPUTLIST (agent_code, agent_id, agent_name
+        )
+        WRAPPER (jdbc agent)
+    );
+

@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE VIEW sales_by_category FOLDER = '/onboarding exercise/3. integration' AS SELECT category AS category, nest(rank, "SellerId", "TotalAmount") AS sales FROM dv_seller_rank GROUP BY category;
+
+ALTER VIEW sales_by_category
+ LAYOUT (dv_seller_rank = [20, 20, 200, 106]);
+

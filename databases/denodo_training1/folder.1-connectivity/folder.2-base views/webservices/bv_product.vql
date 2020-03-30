@@ -1,0 +1,88 @@
+﻿CREATE OR REPLACE SOAP WEBSERVICE bv_product
+    CONNECTION (
+        CHUNKSIZE = 1000
+        CHUNKTIMEOUT = 90000
+        QUERYTIMEOUT = 900000
+        POOLENABLED = true
+        POOLINITSIZE = 0
+        POOLMAXACTIVE = 30
+    )
+    I18N  = us_pst
+    DATETYPEMAPPING DATE
+    NOWRAPARRAYS
+    RAISEFAULTONIDU
+    DONOTAPPLYOUTPUTXSLTTOERRORS
+    OUTPUT 
+        ( STYLE DOCUMENT )
+    OPERATION 'getBV_PRODUCTByCODEAndDESCRIPTIONAndWARNINGSAndNUMRESULTSAndPRODUCTIDAndPRODUCTNAMEAndPRODUCTPRICEAn' (
+        TYPE SELECT
+        SCHEMA VIEW bv_product
+        VQL = 'SELECT code, description, warnings, numresults, productid, productname, productprice, category, characteristics, accessories FROM bv_product ^ExecuteIfIsNotNull("WHERE ",@WHEREEXPRESSION,"") CONTEXT (''i18n'' = ''us_pst''^ExecuteIfIsNotNull(", ",@VERBOSEERRORS,"")^ExecuteIfIsNotNull(", ",@CONTEXTEXPRESSION,""))'
+        INPUTS 'GetBV_PRODUCTByCODEAndDESCRIPTIONAndWARNINGSAndNUMRESULTSAndPRODUCTIDAndPRODUCTNAMEAndPRODUCTPRICEAn' (
+            'CODE' code:'text' '=' 
+            'DESCRIPTION' description:'text' '=' 
+            'WARNINGS' warnings:'text' '=' 
+            'NUMRESULTS' numresults:'text' '=' 
+            'PRODUCTID' productid:'int' '=' 
+            'PRODUCTNAME' productname:'text' '=' 
+            'PRODUCTPRICE' productprice:'float' '=' 
+            'CATEGORY' category:'getallproductdetails_category' '=' (
+                    '/CATEGORY/categoryid'='CATEGORYID',
+                    '/CATEGORY/categoryname'='CATEGORYNAME',
+                    '/CATEGORY'='CATEGORY':'getallproductdetails_category')
+            'CHARACTERISTICS' characteristics:'getallproductdetails_characteristics' '=' (
+                    '/CHARACTERISTICS/characteristic_color'='CHARACTERISTIC_COLOR',
+                    '/CHARACTERISTICS/characteristic_details'='CHARACTERISTIC_DETAILS',
+                    '/CHARACTERISTICS/characteristic_dimensions'='CHARACTERISTIC_DIMENSIONS',
+                    '/CHARACTERISTICS/characteristic_weight'='CHARACTERISTIC_WEIGHT',
+                    '/CHARACTERISTICS'='CHARACTERISTICS':'getallproductdetails_characteristics')
+            'ACCESSORIES' accessories:'getallproductdetails_accessories' '=' (
+                    '/ACCESSORIES/productid'='PRODUCTID',
+                    '/ACCESSORIES/productname'='PRODUCTNAME',
+                    '/ACCESSORIES/productprice'='PRODUCTPRICE',
+                    '/ACCESSORIES'='ACCESSORIES':'getallproductdetails_accessories' / 'getallproductdetails_accessories_productdata')
+            'ACCESSORIES_PRODUCTID' (accessories).productid:'int' '=' 
+            'ACCESSORIES_PRODUCTNAME' (accessories).productname:'text' '=' 
+            'ACCESSORIES_PRODUCTPRICE' (accessories).productprice:'float' '=' 
+            'CATEGORY_CATEGORYID' (category).categoryid:'int' '=' 
+            'CATEGORY_CATEGORYNAME' (category).categoryname:'text' '=' 
+            'CHARACTERISTICS_CHARACTERISTIC_COLOR' (characteristics).characteristic_color:'text' '=' 
+            'CHARACTERISTICS_CHARACTERISTIC_DETAILS' (characteristics).characteristic_details:'text' '=' 
+            'CHARACTERISTICS_CHARACTERISTIC_DIMENSIONS' (characteristics).characteristic_dimensions:'text' '=' 
+            'CHARACTERISTICS_CHARACTERISTIC_WEIGHT' (characteristics).characteristic_weight:'text' '=' 
+        )
+        OUTPUT 
+            'BV_PRODUCTReturn': Array of ( 'BV_PRODUCTReturnRow': Register of (
+                code : 'text',
+                description : 'text',
+                warnings : 'text',
+                numresults : 'text',
+                productid : 'int',
+                productname : 'text',
+                productprice : 'float',
+                category : 'getallproductdetails_category',
+                characteristics : 'getallproductdetails_characteristics',
+                accessories : 'getallproductdetails_accessories'
+            ) (
+                    '/accessories'='ACCESSORIES':'getallproductdetails_accessories' / 'getallproductdetails_accessories_productdata',
+                    '/accessories/productid'='PRODUCTID',
+                    '/accessories/productname'='PRODUCTNAME',
+                    '/accessories/productprice'='PRODUCTPRICE',
+                    '/category'='CATEGORY':'getallproductdetails_category',
+                    '/category/categoryid'='CATEGORYID',
+                    '/category/categoryname'='CATEGORYNAME',
+                    '/characteristics'='CHARACTERISTICS':'getallproductdetails_characteristics',
+                    '/characteristics/characteristic_color'='CHARACTERISTIC_COLOR',
+                    '/characteristics/characteristic_details'='CHARACTERISTIC_DETAILS',
+                    '/characteristics/characteristic_dimensions'='CHARACTERISTIC_DIMENSIONS',
+                    '/characteristics/characteristic_weight'='CHARACTERISTIC_WEIGHT',
+                    '/code'='CODE',
+                    '/description'='DESCRIPTION',
+                    '/numresults'='NUMRESULTS',
+                    '/productid'='PRODUCTID',
+                    '/productname'='PRODUCTNAME',
+                    '/productprice'='PRODUCTPRICE',
+                    '/warnings'='WARNINGS'))
+    )
+    FOLDER = '/1-connectivity/2-base views';
+

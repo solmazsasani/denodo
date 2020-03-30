@@ -1,0 +1,77 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE WRAPPER JDBC c_c_v_verpleegt5577353058707
+    FOLDER = '/d01e02 - joins/2. base views'
+    DATASOURCENAME=ds_human_resources
+    SCHEMANAME='${databases.denodo_training1.folder.d01e02 - joins.folder.2.. base views.views.jdbc.c_c_v_verpleegt5577353058707.SCHEMANAME}' 
+    RELATIONNAME='C_C_V_VERPLEEGT5577353058707' 
+    OUTPUTSCHEMA (
+        opnamenummer = 'OPNAMENUMMER' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='10', sourcetypeid='1111', sourcetypename='NVARCHAR2')  SORTABLE,
+        patientnummer = 'PATIENTNUMMER' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='13', sourcetypeid='1111', sourcetypename='NVARCHAR2')  SORTABLE,
+        rownumber_per_opnamedeel = 'ROWNUMBER_PER_OPNAMEDEEL' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='20', sourcetypeid='3', sourcetypename='NUMBER')  SORTABLE,
+        ingangsdatumtijd = 'INGANGSDATUMTIJD' :'java.time.LocalDateTime' (OPT) (sourcetypedecimals='9', sourcetyperadix='10', sourcetypesize='11', sourcetypeid='1111', sourcetypename='TIMESTAMP(9)')  SORTABLE,
+        einddatumtijd = 'EINDDATUMTIJD' :'java.time.LocalDateTime' (OPT) (sourcetypedecimals='9', sourcetyperadix='10', sourcetypesize='11', sourcetypeid='1111', sourcetypename='TIMESTAMP(9)')  SORTABLE,
+        opnametype = 'OPNAMETYPE' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='4000', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        specialismecode = 'SPECIALISMECODE' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='5', sourcetypeid='1111', sourcetypename='NVARCHAR2')  SORTABLE,
+        unitcode = 'UNITCODE' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='4', sourcetypeid='1111', sourcetypename='NVARCHAR2')  SORTABLE,
+        unit_overplaats = 'UNIT_OVERPLAATS' :'java.lang.Long' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='3', sourcetypename='NUMBER')  SORTABLE,
+        kamernummer = 'KAMERNUMMER' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='4', sourcetypeid='1111', sourcetypename='NVARCHAR2')  SORTABLE,
+        bednummer = 'BEDNUMMER' :'java.lang.Long' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='3', sourcetypename='NUMBER')  SORTABLE,
+        verpleegteamcode = 'VERPLEEGTEAMCODE' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='4000', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        verpleegteamomschrijving = 'VERPLEEGTEAMOMSCHRIJVING' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='4000', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        themacode = 'THEMACODE' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='4000', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        eerste_record = 'EERSTE_RECORD' :'java.lang.Long' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='3', sourcetypename='NUMBER')  SORTABLE,
+        laatste_record = 'LAATSTE_RECORD' :'java.lang.Long' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='3', sourcetypename='NUMBER')  SORTABLE,
+        expirationdate = 'EXPIRATIONDATE' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='38', sourcetypeid='3', sourcetypename='NUMBER')  SORTABLE,
+        rowstatus = 'ROWSTATUS' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='255', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE
+    );
+
+CREATE OR REPLACE TABLE c_c_v_verpleegt5577353058707 I18N us_pst (
+        opnamenummer:text (sourcetypeid = '-9', sourcetyperadix = '10', sourcetypesize = '10'), 
+        patientnummer:text (sourcetypeid = '-9', sourcetyperadix = '10', sourcetypesize = '13'), 
+        rownumber_per_opnamedeel:decimal (sourcetypeid = '3', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '20'), 
+        ingangsdatumtijd:timestamp (sourcetypeid = '93', sourcetyperadix = '10', sourcetypedecimals = '9', sourcetypesize = '11'), 
+        einddatumtijd:timestamp (sourcetypeid = '93', sourcetyperadix = '10', sourcetypedecimals = '9', sourcetypesize = '11'), 
+        opnametype:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '4000'), 
+        specialismecode:text (sourcetypeid = '-9', sourcetyperadix = '10', sourcetypesize = '5'), 
+        unitcode:text (sourcetypeid = '-9', sourcetyperadix = '10', sourcetypesize = '4'), 
+        unit_overplaats:long (sourcetypeid = '-5', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'), 
+        kamernummer:text (sourcetypeid = '-9', sourcetyperadix = '10', sourcetypesize = '4'), 
+        bednummer:long (sourcetypeid = '-5', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'), 
+        verpleegteamcode:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '4000'), 
+        verpleegteamomschrijving:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '4000'), 
+        themacode:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '4000'), 
+        eerste_record:long (sourcetypeid = '-5', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'), 
+        laatste_record:long (sourcetypeid = '-5', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'), 
+        expirationdate:decimal (sourcetypeid = '3', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '38'), 
+        rowstatus:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '255')
+    )
+    FOLDER = '/d01e02 - joins/2. base views'
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD c_c_v_verpleegt5577353058707(
+        I18N us_pst
+        CONSTRAINTS (
+             ADD opnamenummer (any) OPT ANY
+             ADD patientnummer (any) OPT ANY
+             ADD rownumber_per_opnamedeel (any) OPT ANY
+             ADD ingangsdatumtijd (any) OPT ANY
+             ADD einddatumtijd (any) OPT ANY
+             ADD opnametype (any) OPT ANY
+             ADD specialismecode (any) OPT ANY
+             ADD unitcode (any) OPT ANY
+             ADD unit_overplaats (any) OPT ANY
+             ADD kamernummer (any) OPT ANY
+             ADD bednummer (any) OPT ANY
+             ADD verpleegteamcode (any) OPT ANY
+             ADD verpleegteamomschrijving (any) OPT ANY
+             ADD themacode (any) OPT ANY
+             ADD eerste_record (any) OPT ANY
+             ADD laatste_record (any) OPT ANY
+             ADD expirationdate (any) OPT ANY
+             ADD rowstatus (any) OPT ANY
+        )
+        OUTPUTLIST (bednummer, eerste_record, einddatumtijd, expirationdate, ingangsdatumtijd, kamernummer, laatste_record, opnamenummer, opnametype, patientnummer, rownumber_per_opnamedeel, rowstatus, specialismecode, themacode, unit_overplaats, unitcode, verpleegteamcode, verpleegteamomschrijving
+        )
+        WRAPPER (jdbc c_c_v_verpleegt5577353058707)
+    );
+

@@ -1,0 +1,177 @@
+﻿CREATE OR REPLACE WRAPPER LDAP bv_group
+    FOLDER = '/den60edud02e01 - ldap sources/1. connectivity/1. data sources'
+    DATASOURCENAME=denodotraining
+    OBJECTCLASSES='group'
+    RECURSIVESEARCH=TRUE
+    SINGLE-VALUE=FALSE
+    OUTPUTSCHEMA (
+        admincount = 'adminCount' : 'java.lang.Integer' (OPT),
+        cn = 'cn' : 'java.lang.String' (OPT),
+        controlaccessrights = 'controlAccessRights' : ARRAY OF (
+            controlaccessrights = 'controlAccessRights' : REGISTER OF (
+                controlaccessrights = 'controlAccessRights' : 'java.lang.String' (OPT)
+            )
+        ),
+        desktopprofile = 'desktopProfile' : 'java.lang.String' (OPT),
+        distinguishedname = 'distinguishedName' : 'java.lang.String' (OPT),
+        groupattributes = 'groupAttributes' : 'java.lang.Integer' (OPT),
+        groupmembershipsam = 'groupMembershipSAM' : 'java.lang.String' (OPT),
+        grouptype = 'groupType' : 'java.lang.Integer' (OPT),
+        mail = 'mail' : 'java.lang.String' (OPT),
+        managedby = 'managedBy' : 'java.lang.String' (OPT),
+        member = 'member' : ARRAY OF (
+            member = 'MEMBER' : REGISTER OF (
+                member = 'member' : 'java.lang.String' (OPT)
+            )
+        ),
+        msdsazapplicationdata_0 = 'msDS-AzApplicationData' : 'java.lang.String' (OPT),
+        msdsazbizrule_0 = 'msDS-AzBizRule' : 'java.lang.String' (OPT),
+        msdsazbizrulelanguage_0 = 'msDS-AzBizRuleLanguage' : 'java.lang.String' (OPT),
+        msdsazgenericdata_0 = 'msDS-AzGenericData' : 'java.lang.String' (OPT),
+        msdsazldapquery_0 = 'msDS-AzLDAPQuery' : 'java.lang.String' (OPT),
+        msdsazlastimportedbizrulepath_0 = 'msDS-AzLastImportedBizRulePath' : 'java.lang.String' (OPT),
+        msdsazobjectguid_0 = 'msDS-AzObjectGuid' : 'java.lang.String' (OPT),
+        msdsnonmembers_0 = 'msDS-NonMembers' : ARRAY OF (
+            msdsnonmembers_0 = 'msDS-NonMembers' : REGISTER OF (
+                msdsnonmembers_0 = 'msDS-NonMembers' : 'java.lang.String' (OPT)
+            )
+        ),
+        msdsprimarycomputer_0 = 'msDS-PrimaryComputer' : ARRAY OF (
+            msdsprimarycomputer_0 = 'msDS-PrimaryComputer' : REGISTER OF (
+                msdsprimarycomputer_0 = 'msDS-PrimaryComputer' : 'java.lang.String' (OPT)
+            )
+        ),
+        mssfu30name = 'msSFU30Name' : 'java.lang.String' (OPT),
+        mssfu30nisdomain = 'msSFU30NisDomain' : 'java.lang.String' (OPT),
+        mssfu30posixmember = 'msSFU30PosixMember' : ARRAY OF (
+            mssfu30posixmember = 'msSFU30PosixMember' : REGISTER OF (
+                mssfu30posixmember = 'msSFU30PosixMember' : 'java.lang.String' (OPT)
+            )
+        ),
+        ntgroupmembers = 'nTGroupMembers' : ARRAY OF (
+            ntgroupmembers = 'nTGroupMembers' : REGISTER OF (
+                ntgroupmembers = 'nTGroupMembers' : 'java.lang.String' (OPT)
+            )
+        ),
+        nonsecuritymember = 'nonSecurityMember' : ARRAY OF (
+            nonsecuritymember = 'nonSecurityMember' : REGISTER OF (
+                nonsecuritymember = 'nonSecurityMember' : 'java.lang.String' (OPT)
+            )
+        ),
+        objectcategory = 'objectCategory' : 'java.lang.String' (OPT),
+        operatorcount = 'operatorCount' : 'java.lang.Integer' (OPT),
+        primarygrouptoken = 'primaryGroupToken' : 'java.lang.Integer' (OPT)
+    );
+
+CREATE OR REPLACE TYPE group_controlaccessrights_controlaccessrights AS REGISTER OF (controlaccessrights:text);
+
+CREATE OR REPLACE TYPE group_controlaccessrights AS ARRAY OF group_controlaccessrights_controlaccessrights;
+
+CREATE OR REPLACE TYPE group_member_member AS REGISTER OF (member:text);
+
+CREATE OR REPLACE TYPE group_member AS ARRAY OF group_member_member;
+
+CREATE OR REPLACE TYPE group_msdsnonmembers_0_msdsnonmembers_0 AS REGISTER OF (msdsnonmembers_0:text);
+
+CREATE OR REPLACE TYPE group_msdsnonmembers_0 AS ARRAY OF group_msdsnonmembers_0_msdsnonmembers_0;
+
+CREATE OR REPLACE TYPE group_msdsprimarycomputer_0_msdsprimarycomputer_0 AS REGISTER OF (msdsprimarycomputer_0:text);
+
+CREATE OR REPLACE TYPE group_msdsprimarycomputer_0 AS ARRAY OF group_msdsprimarycomputer_0_msdsprimarycomputer_0;
+
+CREATE OR REPLACE TYPE group_mssfu30posixmember_mssfu30posixmember AS REGISTER OF (mssfu30posixmember:text);
+
+CREATE OR REPLACE TYPE group_mssfu30posixmember AS ARRAY OF group_mssfu30posixmember_mssfu30posixmember;
+
+CREATE OR REPLACE TYPE group_ntgroupmembers_ntgroupmembers AS REGISTER OF (ntgroupmembers:text);
+
+CREATE OR REPLACE TYPE group_ntgroupmembers AS ARRAY OF group_ntgroupmembers_ntgroupmembers;
+
+CREATE OR REPLACE TYPE group_nonsecuritymember_nonsecuritymember AS REGISTER OF (nonsecuritymember:text);
+
+CREATE OR REPLACE TYPE group_nonsecuritymember AS ARRAY OF group_nonsecuritymember_nonsecuritymember;
+
+CREATE OR REPLACE TABLE bv_group I18N us_pst (
+        admincount:int, 
+        cn:text, 
+        controlaccessrights:group_controlaccessrights, 
+        desktopprofile:text, 
+        distinguishedname:text, 
+        groupattributes:int, 
+        groupmembershipsam:text, 
+        grouptype:int, 
+        mail:text, 
+        managedby:text, 
+        member:group_member, 
+        msdsazapplicationdata_0:text, 
+        msdsazbizrule_0:text, 
+        msdsazbizrulelanguage_0:text, 
+        msdsazgenericdata_0:text, 
+        msdsazldapquery_0:text, 
+        msdsazlastimportedbizrulepath_0:text, 
+        msdsazobjectguid_0:text, 
+        msdsnonmembers_0:group_msdsnonmembers_0, 
+        msdsprimarycomputer_0:group_msdsprimarycomputer_0, 
+        mssfu30name:text, 
+        mssfu30nisdomain:text, 
+        mssfu30posixmember:group_mssfu30posixmember, 
+        ntgroupmembers:group_ntgroupmembers, 
+        nonsecuritymember:group_nonsecuritymember, 
+        objectcategory:text, 
+        operatorcount:int, 
+        primarygrouptoken:int
+    )
+    FOLDER = '/den60edud02e01 - ldap sources/1. connectivity/1. data sources'
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD bv_group(
+        I18N us_pst
+        CONSTRAINTS (
+             ADD admincount (any) OPT ANY
+             ADD cn (any) OPT ANY
+             ADD controlaccessrights NOS ZERO ()
+             ADD controlaccessrights NOS ZERO ()
+             ADD controlaccessrights.controlaccessrights (any) OPT ANY
+             ADD desktopprofile (any) OPT ANY
+             ADD distinguishedname (any) OPT ANY
+             ADD groupattributes (any) OPT ANY
+             ADD groupmembershipsam (any) OPT ANY
+             ADD grouptype (any) OPT ANY
+             ADD mail (any) OPT ANY
+             ADD managedby (any) OPT ANY
+             ADD member NOS ZERO ()
+             ADD member NOS ZERO ()
+             ADD member.member (any) OPT ANY
+             ADD msdsazapplicationdata_0 (any) OPT ANY
+             ADD msdsazbizrule_0 (any) OPT ANY
+             ADD msdsazbizrulelanguage_0 (any) OPT ANY
+             ADD msdsazgenericdata_0 (any) OPT ANY
+             ADD msdsazldapquery_0 (any) OPT ANY
+             ADD msdsazlastimportedbizrulepath_0 (any) OPT ANY
+             ADD msdsazobjectguid_0 (any) OPT ANY
+             ADD msdsnonmembers_0 NOS ZERO ()
+             ADD msdsnonmembers_0 NOS ZERO ()
+             ADD msdsnonmembers_0.msdsnonmembers_0 (any) OPT ANY
+             ADD msdsprimarycomputer_0 NOS ZERO ()
+             ADD msdsprimarycomputer_0 NOS ZERO ()
+             ADD msdsprimarycomputer_0.msdsprimarycomputer_0 (any) OPT ANY
+             ADD mssfu30name (any) OPT ANY
+             ADD mssfu30nisdomain (any) OPT ANY
+             ADD mssfu30posixmember NOS ZERO ()
+             ADD mssfu30posixmember NOS ZERO ()
+             ADD mssfu30posixmember.mssfu30posixmember (any) OPT ANY
+             ADD ntgroupmembers NOS ZERO ()
+             ADD ntgroupmembers NOS ZERO ()
+             ADD ntgroupmembers.ntgroupmembers (any) OPT ANY
+             ADD nonsecuritymember NOS ZERO ()
+             ADD nonsecuritymember NOS ZERO ()
+             ADD nonsecuritymember.nonsecuritymember (any) OPT ANY
+             ADD objectcategory (any) OPT ANY
+             ADD operatorcount (any) OPT ANY
+             ADD primarygrouptoken (any) OPT ANY
+        )
+        OUTPUTLIST (admincount, cn, controlaccessrights, desktopprofile, distinguishedname, groupattributes, groupmembershipsam, grouptype, mail, managedby, member, msdsazapplicationdata_0, msdsazbizrule_0, msdsazbizrulelanguage_0, msdsazgenericdata_0, msdsazlastimportedbizrulepath_0, msdsazldapquery_0, msdsazobjectguid_0, msdsnonmembers_0, msdsprimarycomputer_0, mssfu30name, mssfu30nisdomain, mssfu30posixmember, nonsecuritymember, ntgroupmembers, objectcategory, operatorcount, primarygrouptoken
+        )
+        WRAPPER (ldap bv_group)
+    );
+

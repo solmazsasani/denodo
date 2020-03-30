@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE VIEW flattest FOLDER = '/1-connectivity/1-data sources' AS SELECT productid, sales FROM FLATTEN test_sales_search AS v ( v.salesdata);
+
+ALTER VIEW flattest
+ LAYOUT (test_sales_search = [20, 20, 267, 246]);
+

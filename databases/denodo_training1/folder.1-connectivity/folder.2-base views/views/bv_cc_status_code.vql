@@ -1,0 +1,30 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE WRAPPER JDBC status_code
+    FOLDER = '/1-connectivity/2-base views'
+    DATASOURCENAME=ds_call_center
+    SCHEMANAME='${databases.denodo_training1.folder.1-connectivity.folder.2-base views.views.jdbc.status_code.SCHEMANAME}' 
+    RELATIONNAME='STATUS_CODE' 
+    OUTPUTSCHEMA (
+        code_id = 'CODE_ID' :'java.math.BigDecimal' (OPT) (sourcetyperadix='10', sourcetypeid='3', sourcetypename='NUMBER')  NOT NULL SORTABLE,
+        code_description = 'CODE_DESCRIPTION' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='16', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE
+    );
+
+CREATE OR REPLACE TABLE bv_cc_status_code I18N us_pst (
+        code_id:decimal (sourcetypeid = '3', sourcetyperadix = '10'), 
+        code_description:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '16')
+    )
+    FOLDER = '/1-connectivity/2-base views'
+    PRIMARY KEY ( 'code_id' )
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD status_code(
+        I18N us_pst
+        CONSTRAINTS (
+             ADD code_id (any) OPT ANY
+             ADD code_description (any) OPT ANY
+        )
+        OUTPUTLIST (code_description, code_id
+        )
+        WRAPPER (jdbc status_code)
+    );
+

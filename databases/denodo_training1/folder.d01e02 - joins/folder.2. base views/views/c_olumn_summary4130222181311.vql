@@ -1,0 +1,44 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE WRAPPER JDBC c_olumn_summary4130222181311
+    FOLDER = '/d01e02 - joins/2. base views'
+    DATASOURCENAME=ds_human_resources
+    SCHEMANAME='${databases.denodo_training1.folder.d01e02 - joins.folder.2.. base views.views.jdbc.c_olumn_summary4130222181311.SCHEMANAME}' 
+    RELATIONNAME='C_OLUMN_SUMMARY4130222181311' 
+    OUTPUTSCHEMA (
+        database_name = 'DATABASE_NAME' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='4000', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        view_name = 'VIEW_NAME' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='4000', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        field_0 = 'FIELD_0' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='4000', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        column_vdp_type = 'COLUMN_VDP_TYPE' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='4000', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        column_sql_type = 'COLUMN_SQL_TYPE' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='4000', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        expirationdate = 'EXPIRATIONDATE' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='38', sourcetypeid='3', sourcetypename='NUMBER')  SORTABLE,
+        rowstatus = 'ROWSTATUS' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='255', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE
+    );
+
+CREATE OR REPLACE TABLE c_olumn_summary4130222181311 I18N us_pst (
+        database_name:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '4000'), 
+        view_name:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '4000'), 
+        field_0:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '4000'), 
+        column_vdp_type:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '4000'), 
+        column_sql_type:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '4000'), 
+        expirationdate:decimal (sourcetypeid = '3', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '38'), 
+        rowstatus:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '255')
+    )
+    FOLDER = '/d01e02 - joins/2. base views'
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD c_olumn_summary4130222181311(
+        I18N us_pst
+        CONSTRAINTS (
+             ADD database_name (any) OPT ANY
+             ADD view_name (any) OPT ANY
+             ADD field_0 (any) OPT ANY
+             ADD column_vdp_type (any) OPT ANY
+             ADD column_sql_type (any) OPT ANY
+             ADD expirationdate (any) OPT ANY
+             ADD rowstatus (any) OPT ANY
+        )
+        OUTPUTLIST (column_sql_type, column_vdp_type, database_name, expirationdate, field_0, rowstatus, view_name
+        )
+        WRAPPER (jdbc c_olumn_summary4130222181311)
+    );
+

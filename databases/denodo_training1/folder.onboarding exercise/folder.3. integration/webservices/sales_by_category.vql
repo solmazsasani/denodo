@@ -1,0 +1,41 @@
+﻿CREATE OR REPLACE SOAP WEBSERVICE sales_by_category
+    CONNECTION (
+        CHUNKSIZE = 1000
+        CHUNKTIMEOUT = 90000
+        QUERYTIMEOUT = 900000
+        POOLENABLED = true
+        POOLINITSIZE = 0
+        POOLMAXACTIVE = 30
+    )
+    I18N  = us_pst
+    DATETYPEMAPPING DATE
+    NOWRAPARRAYS
+    RAISEFAULTONIDU
+    DONOTAPPLYOUTPUTXSLTTOERRORS
+    OUTPUT 
+        ( STYLE DOCUMENT )
+    OPERATION 'getSALES_BY_CATEGORYByCATEGORYAndSALES' (
+        TYPE SELECT
+        SCHEMA VIEW sales_by_category
+        VQL = 'SELECT category, sales FROM sales_by_category ^ExecuteIfIsNotNull("WHERE ",@WHEREEXPRESSION,"") CONTEXT (''i18n'' = ''us_pst''^ExecuteIfIsNotNull(", ",@VERBOSEERRORS,"")^ExecuteIfIsNotNull(", ",@CONTEXTEXPRESSION,""))'
+        INPUTS 'GetSALES_BY_CATEGORYByCATEGORYAndSALES' (
+            'CATEGORY' category:'text' '=' OBL 
+            'SALES' sales:'_array_register_rank_SellerId_TotalAmount' '=' (
+                    '/SALES/rank'='RANK',
+                    '/SALES/sellerid'='SELLERID',
+                    '/SALES/totalamount'='TOTALAMOUNT',
+                    '/SALES'='SALES':'_array_register_rank_SellerId_TotalAmount' / '_register_rank_SellerId_TotalAmount')
+        )
+        OUTPUT 
+            'SALES_BY_CATEGORYReturn': Array of ( 'SALES_BY_CATEGORYReturnRow': Register of (
+                category : 'text',
+                sales : '_array_register_rank_SellerId_TotalAmount'
+            ) (
+                    '/category'='CATEGORY',
+                    '/sales'='SALES':'_array_register_rank_SellerId_TotalAmount_1' / '_register_rank_SellerId_TotalAmount_1',
+                    '/sales/SellerId'='SELLERID',
+                    '/sales/TotalAmount'='TOTALAMOUNT',
+                    '/sales/rank'='RANK'))
+    )
+    FOLDER = '/onboarding exercise/3. integration';
+

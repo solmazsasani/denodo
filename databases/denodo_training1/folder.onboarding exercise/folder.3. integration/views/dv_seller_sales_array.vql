@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE VIEW dv_seller_sales_array FOLDER = '/onboarding exercise/3. integration' AS SELECT dv_lab_products_by_category.categoryname AS category, bv_lab_sales.employeeid AS "SellerId", sum(cast('int', bv_lab_sales.totalprice)) AS "TotalAmount" FROM bv_lab_sales AS bv_lab_sales INNER JOIN dv_lab_products_by_category AS dv_lab_products_by_category ON bv_lab_sales.productid = dv_lab_products_by_category.productid  GROUP BY bv_lab_sales.employeeid, dv_lab_products_by_category.categoryname;
+
+ALTER VIEW dv_seller_sales_array
+ LAYOUT (bv_lab_sales = [233, 164, 200, 206], dv_lab_products_by_category = [579, 196, 200, 225]);
+

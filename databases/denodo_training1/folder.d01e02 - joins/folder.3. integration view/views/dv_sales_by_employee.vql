@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE VIEW dv_sales_by_employee FOLDER = '/d01e02 - joins/3. integration view' AS SELECT bv_employees.employee_id AS employee_id, bv_employees.first_name AS employee_first_name, bv_employees.last_name AS employee_last_name, bv_employees.email AS employee_email, bv_sales.saleid AS saleid, bv_sales.customerid AS customerid, bv_sales.saledate AS saledate, bv_sales.bundleamount AS bundleamount, bv_sales.productsaleprice AS productsaleprice, bv_sales.totalprice AS totalprice, bv_sales.productid AS productid, bv_getallproducts.productname AS productname, bv_getallproducts.productprice AS productprice, input_employee_id FROM (bv_employees AS bv_employees INNER JOIN bv_sales AS bv_sales ON bv_employees.employee_id = bv_sales.employeeid ) INNER JOIN bv_getallproducts AS bv_getallproducts ON bv_sales.productid = bv_getallproducts.productid  WHERE bv_employees.employee_id = input_employee_id USING PARAMETERS ( input_employee_id : int 73);
+
+ALTER VIEW dv_sales_by_employee
+ LAYOUT (bv_employees = [132, 203, 200, 225], bv_sales = [461, 164, 200, 206], bv_getallproducts = [808, 224, 200, 86]);
+

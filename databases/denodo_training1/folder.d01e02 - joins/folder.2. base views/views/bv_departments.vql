@@ -1,0 +1,42 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE WRAPPER JDBC departments_896
+    FOLDER = '/d01e02 - joins/1. data sources'
+    DATASOURCENAME=ds_human_resources
+    SCHEMANAME='${databases.denodo_training1.folder.d01e02 - joins.folder.1.. data sources.views.jdbc.departments_896.SCHEMANAME}' 
+    RELATIONNAME='DEPARTMENTS' 
+    OUTPUTSCHEMA (
+        department_id = 'DEPARTMENT_ID' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='4', sourcetypeid='3', sourcetypename='NUMBER')  NOT NULL SORTABLE,
+        department_name = 'DEPARTMENT_NAME' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='30', sourcetypeid='12', sourcetypename='VARCHAR2')  NOT NULL SORTABLE,
+        manager_id = 'MANAGER_ID' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='6', sourcetypeid='3', sourcetypename='NUMBER')  SORTABLE,
+        location_id = 'LOCATION_ID' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='4', sourcetypeid='3', sourcetypename='NUMBER')  SORTABLE
+    )
+    CONSTRAINT 'DEPT_ID_PK' PRIMARY KEY ( 'DEPARTMENT_ID' )
+    CONSTRAINT 'DEPT_MGR_FK' FOREIGN KEY ( 'MANAGER_ID' ) 
+    REFERENCES 'HUMAN_RESOURCES'.'EMPLOYEES'( 'EMPLOYEE_ID' )  ON DELETE RESTRICT NOT DEFERRABLE 
+    CONSTRAINT 'DEPT_LOC_FK' FOREIGN KEY ( 'LOCATION_ID' ) 
+    REFERENCES 'HUMAN_RESOURCES'.'LOCATIONS'( 'LOCATION_ID' )  ON DELETE RESTRICT NOT DEFERRABLE 
+    INDEX 'DEPT_ID_PK' CLUSTER UNIQUE PRIMARY ( 'DEPARTMENT_ID' );
+
+CREATE OR REPLACE TABLE bv_departments I18N us_pst (
+        department_id:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '4'), 
+        department_name:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '30'), 
+        manager_id:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '6'), 
+        location_id:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '4')
+    )
+    FOLDER = '/d01e02 - joins/2. base views'
+    CONSTRAINT 'DEPT_ID_PK' PRIMARY KEY ( 'department_id' )
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD departments(
+        I18N us_pst
+        CONSTRAINTS (
+             ADD department_id (any) OPT ANY
+             ADD department_name (any) OPT ANY
+             ADD manager_id (any) OPT ANY
+             ADD location_id (any) OPT ANY
+        )
+        OUTPUTLIST (department_id, department_name, location_id, manager_id
+        )
+        WRAPPER (jdbc departments_896)
+    );
+

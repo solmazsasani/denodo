@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE VIEW p_test_multi_bv AS SELECT test_multi_bv.order_id AS order_id, test_multi_bv.pr_id AS pr_id FROM test_multi_bv ORDER BY order_id ASC;
+
+ALTER VIEW p_test_multi_bv
+ LAYOUT (test_multi_bv = [20, 20, 200, 66]);
+

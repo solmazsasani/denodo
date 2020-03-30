@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE VIEW iv_interactions FOLDER = '/2 - integration' AS SELECT DISTINCT call_id FROM (SELECT customer_code, call_id, case_id AS global_case_id, agent_id, date_call_received FROM bv_cc_service_call UNION SELECT sr_date AS date_call_received, agent_id, global_case_id, customer_code FROM bv_support_get_all_service_request) GROUP BY call_id;
+
+ALTER VIEW iv_interactions
+ LAYOUT (bv_cc_service_call = [150, 90, 200, 246], bv_support_get_all_service_request = [540, 0, 200, 366]);
+

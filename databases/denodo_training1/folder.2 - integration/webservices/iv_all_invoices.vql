@@ -1,0 +1,34 @@
+﻿CREATE OR REPLACE REST WEBSERVICE iv_all_invoices
+    CONNECTION (
+        CHUNKSIZE = 1000
+        CHUNKTIMEOUT = 90000
+        QUERYTIMEOUT = 900000
+        POOLENABLED = true
+        POOLINITSIZE = 0
+        POOLMAXACTIVE = 30
+    )
+    DEFAULTREPRESENTATION = HTML
+    SUPPORTEDREPRESENTATIONS (HTML, XML, JSON)
+    RESOURCES (
+        VIEW iv_all_invoices FIELDS (
+            date_invoice : 'text', 
+            date_placed : 'text', 
+            date_delivered : 'text', 
+            date_closed : 'text', 
+            first_name : 'text', 
+            last_name : 'text', 
+            email : 'text', 
+            address : 'text', 
+            country : 'text', 
+            postal_code : 'text', 
+            phone : 'text', 
+            invoice : 'text', 
+            order : 'long', 
+            cost : 'long'
+        )
+    )
+    OPTIONS ( NULLVALUESASEMPTYXMLELEMENTS = false
+        PROCESS_FUNCTIONS_IN_SELECT_PARAMETER = true ) 
+    OPENAPI2 ( API_VERSION = '1.0.0' ) 
+    FOLDER = '/2 - integration';
+

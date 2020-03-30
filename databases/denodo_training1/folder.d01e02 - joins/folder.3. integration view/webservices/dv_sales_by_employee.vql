@@ -1,0 +1,34 @@
+﻿CREATE OR REPLACE REST WEBSERVICE dv_sales_by_employee
+    CONNECTION (
+        CHUNKSIZE = 1000
+        CHUNKTIMEOUT = 90000
+        QUERYTIMEOUT = 900000
+        POOLENABLED = true
+        POOLINITSIZE = 0
+        POOLMAXACTIVE = 30
+    )
+    DEFAULTREPRESENTATION = HTML
+    SUPPORTEDREPRESENTATIONS (HTML, XML, JSON)
+    RESOURCES (
+        VIEW dv_sales_by_employee FIELDS (
+            employee_id : 'int', 
+            employee_first_name : 'text', 
+            employee_last_name : 'text', 
+            employee_email : 'text', 
+            saleid : 'text', 
+            customerid : 'text', 
+            saledate : 'text', 
+            bundleamount : 'text', 
+            productsaleprice : 'text', 
+            totalprice : 'text', 
+            productid : 'text', 
+            productname : 'text', 
+            productprice : 'float', 
+            input_employee_id : 'int'
+        )
+    )
+    OPTIONS ( NULLVALUESASEMPTYXMLELEMENTS = false
+        PROCESS_FUNCTIONS_IN_SELECT_PARAMETER = true ) 
+    OPENAPI2 ( API_VERSION = '1.0.0' ) 
+    FOLDER = '/d01e02 - joins/3. integration view';
+

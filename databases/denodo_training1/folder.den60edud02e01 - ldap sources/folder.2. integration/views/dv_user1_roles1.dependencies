@@ -1,0 +1,10 @@
+﻿/databases/denodo_training1/folder.den60edud02e01 - ldap sources/den60edud02e01 - ldap sources.vql
+/databases/denodo_training1/folder.den60edud02e01 - ldap sources/folder.2. integration/2. integration.vql
+/databases/denodo_training1/folder.den60edud02e01 - ldap sources/folder.1. connectivity/1. connectivity.vql
+/databases/denodo_training1/folder.den60edud02e01 - ldap sources/folder.1. connectivity/folder.2. base views/2. base views.vql
+/databases/denodo_training1/folder.den60edud02e01 - ldap sources/folder.1. connectivity/folder.1. data sources/1. data sources.vql
+/databases/denodo_training1/folder.den60edud02e01 - ldap sources/folder.1. connectivity/folder.1. data sources/datasources/ldap/denodotraining.vql
+/databases/denodo_training1/folder.den60edud02e01 - ldap sources/folder.1. connectivity/folder.2. base views/views/bv_user1.vql
+/databases/denodo_training1/folder.den60edud02e01 - ldap sources/folder.1. connectivity/folder.2. base views/views/dv_user1.vql
+/databases/denodo_training1/folder.den60edud02e01 - ldap sources/folder.1. connectivity/folder.2. base views/views/bv_group1.vql
+/databases/denodo_training1/folder.den60edud02e01 - ldap sources/folder.2. integration/views/dv_user_roles.vql

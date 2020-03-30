@@ -1,0 +1,27 @@
+﻿CREATE OR REPLACE WRAPPER JDBC test_multi_bv
+    FOLDER = '/1-connectivity/1-data sources'
+    DATASOURCENAME=ds_web_orders
+    SQLSENTENCE='select order_id from WEBSITE_SYS.STOCK s INNER JOIN WEBSITE_SYS.ORDER_ITEM  o ON (s.product_id=o.product_id)  WHERE s.product_id=''@pr_id'''   
+    OUTPUTSCHEMA (
+        order_id = 'ORDER_ID' :'java.math.BigDecimal' (sourcetypeid='2', sourcetypename='NUMBER')  NOT NULL SORTABLE NOT UPDATEABLE,
+        pr_id = 'PR_ID' :'java.lang.String' (OBL) (DEFAULTVALUE='10')  EXTERN SORTABLE
+    );
+
+CREATE OR REPLACE TABLE test_multi_bv I18N us_pst (
+        order_id:decimal (sourcetypeid = '3'), 
+        pr_id:text (extern)
+    )
+    FOLDER = '/1-connectivity/1-data sources'
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD test_multi_bv(
+        I18N us_pst
+        CONSTRAINTS (
+             ADD order_id NOS ZERO ()
+             ADD pr_id (=) OBL ONE
+        )
+        OUTPUTLIST (order_id
+        )
+        WRAPPER (jdbc test_multi_bv)
+    );
+

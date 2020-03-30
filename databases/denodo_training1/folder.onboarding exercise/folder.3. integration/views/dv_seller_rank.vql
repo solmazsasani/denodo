@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE VIEW dv_seller_rank FOLDER = '/onboarding exercise/3. integration' AS SELECT dv_seller_sorted.category AS category, rownum() AS rank, dv_seller_sorted."SellerId" AS "SellerId", dv_seller_sorted."TotalAmount" AS "TotalAmount" FROM dv_seller_sorted;
+
+ALTER VIEW dv_seller_rank
+ LAYOUT (dv_seller_sorted = [20, 20, 200, 86]);
+

@@ -1,0 +1,30 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE DATASOURCE JDBC testttttttttttttt
+    FOLDER = '/1 - connectivity/1 - data sources'
+    DRIVERCLASSNAME = 'com.denodo.vdp.jdbc.Driver'
+    DATABASEURI = '${databases.denodo_training1.folder.1 - connectivity.folder.1 - data sources.datasources.jdbc.testttttttttttttt.DATABASEURI}'
+    USERNAME = '${databases.denodo_training1.folder.1 - connectivity.folder.1 - data sources.datasources.jdbc.testttttttttttttt.USERNAME}'
+    USERPASSWORD = ''
+    CLASSPATH = 'vdp-7.0'
+    DATABASENAME = 'vdp'
+    DATABASEVERSION = '70'
+    FETCHSIZE = 1000
+    VALIDATIONQUERY = 'select 1'
+    INITIALSIZE = 4
+    MAXIDLE = -1
+    MINIDLE = 0
+    MAXACTIVE = 20
+    EXHAUSTEDACTION = 1
+    TESTONBORROW = true
+    TESTONRETURN = false
+    TESTWHILEIDLE = false
+    TIMEBETWEENEVICTION = -1
+    NUMTESTPEREVICTION = 3
+    MINEVICTABLETIME = 1800000
+    POOLPREPAREDSTATEMENTS = false
+    MAXSLEEPINGPS = 4
+    INITIALCAPACITYPS = 8
+    DATA_LOAD_CONFIGURATION (
+        BATCHINSERTSIZE = 200
+    );
+

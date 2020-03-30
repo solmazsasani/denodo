@@ -1,0 +1,45 @@
+﻿CREATE OR REPLACE WRAPPER LDAP bv_user1
+    FOLDER = '/den60edud02e01 - ldap sources/1. connectivity/2. base views'
+    DATASOURCENAME=denodotraining
+    OBJECTCLASSES='user'
+    RECURSIVESEARCH=TRUE
+    SINGLE-VALUE=FALSE
+    OUTPUTSCHEMA (
+        displayname = 'displayName' : 'java.lang.String' (OPT),
+        memberof = 'memberOf' : ARRAY OF (
+            memberof = 'memberOf' : REGISTER OF (
+                memberof = 'memberOf' : 'java.lang.String' (OPT)
+            )
+        ),
+        samaccountname = 'sAMAccountName' : 'java.lang.String' (OPT),
+        userprincipalname = 'userPrincipalName' : 'java.lang.String' (OPT)
+    );
+
+CREATE OR REPLACE TYPE user_0_memberof_memberof AS REGISTER OF (memberof:text);
+
+CREATE OR REPLACE TYPE user_0_memberof AS ARRAY OF user_0_memberof_memberof;
+
+CREATE OR REPLACE TABLE bv_user1 I18N us_pst (
+        displayname:text, 
+        memberof:user_0_memberof, 
+        samaccountname:text, 
+        userprincipalname:text
+    )
+    FOLDER = '/den60edud02e01 - ldap sources/1. connectivity/2. base views'
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD bv_user1(
+        I18N us_pst
+        CONSTRAINTS (
+             ADD displayname (any) OPT ANY
+             ADD memberof NOS ZERO ()
+             ADD memberof NOS ZERO ()
+             ADD memberof.memberof (any) OPT ANY
+             ADD samaccountname (any) OPT ANY
+             ADD userprincipalname (any) OPT ANY
+        )
+        OUTPUTLIST (displayname, memberof, samaccountname, userprincipalname
+        )
+        WRAPPER (ldap bv_user1)
+    );
+

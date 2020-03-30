@@ -1,0 +1,14 @@
+﻿/databases/denodo_training1/folder.onboarding exercise/onboarding exercise.vql
+/databases/denodo_training1/folder.onboarding exercise/folder.3. integration/3. integration.vql
+/databases/denodo_training1/folder.onboarding exercise/folder.1. connectivity/1. connectivity.vql
+/databases/denodo_training1/folder.onboarding exercise/folder.1. connectivity/folder.2.base views/2.base views.vql
+/databases/denodo_training1/folder.onboarding exercise/folder.1. connectivity/folder.1.data sources/1.data sources.vql
+/databases/denodo_training1/folder.onboarding exercise/folder.1. connectivity/folder.1.data sources/datasources/json/ds_lab_sales.vql
+/databases/denodo_training1/folder.onboarding exercise/folder.1. connectivity/folder.2.base views/views/bv_lab_sales.vql
+/databases/denodo_training1/folder.onboarding exercise/folder.1. connectivity/folder.1.data sources/datasources/ws/ds_lab_product.vql
+/databases/denodo_training1/folder.onboarding exercise/folder.1. connectivity/folder.2.base views/views/bv_products_by_category.vql
+/databases/denodo_training1/folder.onboarding exercise/folder.3. integration/views/dv_lab_products_by_category.vql
+/databases/denodo_training1/folder.onboarding exercise/folder.3. integration/views/dv_seller_sales_array.vql
+/databases/denodo_training1/folder.onboarding exercise/folder.3. integration/views/dv_seller_sorted.vql
+/databases/denodo_training1/folder.onboarding exercise/folder.3. integration/views/dv_seller_rank.vql
+/databases/denodo_training1/folder.onboarding exercise/folder.3. integration/views/sales_by_category.vql

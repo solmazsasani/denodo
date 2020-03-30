@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE VIEW iv_product_details_array_flatten FOLDER = '/2-integration' AS SELECT code, description, warnings, numresults, productid, productname, productprice, accessories, (category).categoryid AS categoryid, (category).categoryname AS categoryname, (characteristics).characteristic_dimensions AS characteristic_dimensions, (characteristics).characteristic_weight AS characteristic_weight, (characteristics).characteristic_details AS characteristic_details, (characteristics).characteristic_color AS characteristic_color FROM FLATTEN iv_product_detail_array AS v ( v.productdetails);
+
+ALTER VIEW iv_product_details_array_flatten
+ LAYOUT (iv_product_detail_array = [20, 20, 602, 426]);
+

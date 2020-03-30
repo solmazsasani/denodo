@@ -1,0 +1,10 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE DATASOURCE LDAP denodotraining
+    FOLDER = '/den60edud02e01 - ldap sources/1. connectivity/1. data sources'
+    URI='${databases.denodo_training1.folder.den60edud02e01 - ldap sources.folder.1.. connectivity.folder.1.. data sources.datasources.ldap.denodotraining.URI}'
+    USERNAME='${databases.denodo_training1.folder.den60edud02e01 - ldap sources.folder.1.. connectivity.folder.1.. data sources.datasources.ldap.denodotraining.USERNAME}'
+    USERPASSWORD='${databases.denodo_training1.folder.den60edud02e01 - ldap sources.folder.1.. connectivity.folder.1.. data sources.datasources.ldap.denodotraining.USERPASSWORD}' ${databases.denodo_training1.folder.den60edud02e01 - ldap sources.folder.1.. connectivity.folder.1.. data sources.datasources.ldap.denodotraining.USERPASSWORD.ENCRYPTED}
+    USEPAGING=FALSE
+    MAXPAGESIZE=1000
+    POOL_ENABLED = TRUE;
+

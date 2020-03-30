@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE VIEW dv_employees_department_manager FOLDER = '/d01e02 - joins/3. integration view' AS SELECT bv_employees.employee_id AS employee_id, bv_employees.first_name AS employee_first_name, bv_employees.last_name AS employee_last_name, bv_employees.email AS employee_email, bv_employees.department_id AS department_id, bv_departments.department_name AS department_name, bv_employees.manager_id AS manager_id, bv_employees1.first_name AS manager_first_name, bv_employees1.last_name AS manager_last_name, bv_employees1.email AS manager_email FROM (bv_employees AS bv_employees LEFT OUTER JOIN bv_departments AS bv_departments ON bv_employees.department_id = bv_departments.department_id ) LEFT OUTER JOIN bv_employees AS bv_employees1 ON bv_employees.manager_id = bv_employees1.employee_id ;
+
+ALTER VIEW dv_employees_department_manager
+ LAYOUT (bv_employees = [165, 175, 200, 225], bv_departments = [525, 129, 200, 106], bv_employees = [530, 360, 200, 225]);
+

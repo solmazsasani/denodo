@@ -1,0 +1,5 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+UNDEPLOY IF EXISTS WEBSERVICE dv_seller_rank;
+
+DEPLOY WEBSERVICE dv_seller_rank LOGIN = '${databases.denodo_training1.webcontainer.webservices.dv_seller_rank.LOGIN}' PASSWORD = '${databases.denodo_training1.webcontainer.webservices.dv_seller_rank.PASSWORD}' ${databases.denodo_training1.webcontainer.webservices.dv_seller_rank.PASSWORD.ENCRYPTED};
+

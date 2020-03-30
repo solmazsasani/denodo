@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE VIEW dv_seller_sorted FOLDER = '/onboarding exercise/3. integration' AS SELECT dv_seller_sales_array.category AS category, dv_seller_sales_array."SellerId" AS "SellerId", dv_seller_sales_array."TotalAmount" AS "TotalAmount" FROM dv_seller_sales_array ORDER BY "TotalAmount" DESC;
+
+ALTER VIEW dv_seller_sorted
+ LAYOUT (dv_seller_sales_array = [20, 20, 200, 86]);
+

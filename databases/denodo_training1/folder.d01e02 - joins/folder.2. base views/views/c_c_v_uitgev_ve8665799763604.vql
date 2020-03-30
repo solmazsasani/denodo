@@ -1,0 +1,131 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE WRAPPER JDBC c_c_v_uitgev_ve8665799763604
+    FOLDER = '/d01e02 - joins/2. base views'
+    DATASOURCENAME=ds_human_resources
+    SCHEMANAME='${databases.denodo_training1.folder.d01e02 - joins.folder.2.. base views.views.jdbc.c_c_v_uitgev_ve8665799763604.SCHEMANAME}' 
+    RELATIONNAME='C_C_V_UITGEV_VE8665799763604' 
+    OUTPUTSCHEMA (
+        uitgevoerde_verrichtingsnummer = 'UITGEVOERDE_VERRICHTINGSNUMMER' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='10', sourcetypeid='1111', sourcetypename='NVARCHAR2')  SORTABLE,
+        statuscode = 'STATUSCODE' :'java.lang.Long' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='3', sourcetypename='NUMBER')  SORTABLE,
+        patientnummer = 'PATIENTNUMMER' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='13', sourcetypeid='1111', sourcetypename='NVARCHAR2')  SORTABLE,
+        leeftijd_patient = 'LEEFTIJD_PATIENT' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='20', sourcetypeid='3', sourcetypename='NUMBER')  SORTABLE,
+        verrichtingscode = 'VERRICHTINGSCODE' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='4000', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        dbc_nummer = 'DBC_NUMMER' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='10', sourcetypeid='1111', sourcetypename='NVARCHAR2')  SORTABLE,
+        referentienummer = 'REFERENTIENUMMER' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='10', sourcetypeid='1111', sourcetypename='NVARCHAR2')  SORTABLE,
+        aantal_malen_uitgevoerd = 'AANTAL_MALEN_UITGEVOERD' :'java.lang.Long' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='3', sourcetypename='NUMBER')  SORTABLE,
+        verrichtingsdatum = 'VERRICHTINGSDATUM' :'java.time.LocalDateTime' (OPT) (sourcetypedecimals='3', sourcetyperadix='10', sourcetypesize='11', sourcetypeid='1111', sourcetypename='TIMESTAMP(3)')  SORTABLE,
+        verrichtingsmaand = 'VERRICHTINGSMAAND' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='20', sourcetypeid='3', sourcetypename='NUMBER')  SORTABLE,
+        verrichtingsjaar = 'VERRICHTINGSJAAR' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='20', sourcetypeid='3', sourcetypename='NUMBER')  SORTABLE,
+        aanvr_zorgverlenerscode = 'AANVR_ZORGVERLENERSCODE' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='10', sourcetypeid='1111', sourcetypename='NVARCHAR2')  SORTABLE,
+        aanvr_specialismecode = 'AANVR_SPECIALISMECODE' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='5', sourcetypeid='1111', sourcetypename='NVARCHAR2')  SORTABLE,
+        prod_zorgverlenerscode = 'PROD_ZORGVERLENERSCODE' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='10', sourcetypeid='1111', sourcetypename='NVARCHAR2')  SORTABLE,
+        prod_specialismecode = 'PROD_SPECIALISMECODE' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='5', sourcetypeid='1111', sourcetypename='NVARCHAR2')  SORTABLE,
+        productieplekcode = 'PRODUCTIEPLEKCODE' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='10', sourcetypeid='1111', sourcetypename='NVARCHAR2')  SORTABLE,
+        factuurnummer = 'FACTUURNUMMER' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='10', sourcetypeid='1111', sourcetypename='NVARCHAR2')  SORTABLE,
+        tariefafdelingcode = 'TARIEFAFDELINGCODE' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='4', sourcetypeid='1111', sourcetypename='NVARCHAR2')  SORTABLE,
+        declaratiecode = 'DECLARATIECODE' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='4000', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        invoerdatum = 'INVOERDATUM' :'java.time.LocalDateTime' (OPT) (sourcetypedecimals='3', sourcetyperadix='10', sourcetypesize='11', sourcetypeid='1111', sourcetypename='TIMESTAMP(3)')  SORTABLE,
+        ziekenhuislocatie = 'ZIEKENHUISLOCATIE' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='3', sourcetypeid='1111', sourcetypename='NVARCHAR2')  SORTABLE,
+        type_code = 'TYPE_CODE' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='2', sourcetypeid='1111', sourcetypename='NVARCHAR2')  SORTABLE,
+        bron = 'BRON' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='4', sourcetypeid='1111', sourcetypename='NVARCHAR2')  SORTABLE,
+        instantiegroepcode = 'INSTANTIEGROEPCODE' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='6', sourcetypeid='1111', sourcetypename='NVARCHAR2')  SORTABLE,
+        instantiecode = 'INSTANTIECODE' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='4000', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        aantal_verstrekt = 'AANTAL_VERSTREKT' :'java.lang.Double' (OPT) (sourcetyperadix='10', sourcetypesize='126', sourcetypeid='6', sourcetypename='FLOAT')  SORTABLE,
+        inkoophoeveelheid = 'INKOOPHOEVEELHEID' :'java.lang.Double' (OPT) (sourcetyperadix='10', sourcetypesize='126', sourcetypeid='6', sourcetypename='FLOAT')  SORTABLE,
+        declaratiebedrag = 'DECLARATIEBEDRAG' :'java.lang.Double' (OPT) (sourcetyperadix='10', sourcetypesize='126', sourcetypeid='6', sourcetypename='FLOAT')  SORTABLE,
+        honorariumbedrag = 'HONORARIUMBEDRAG' :'java.lang.Double' (OPT) (sourcetyperadix='10', sourcetypesize='126', sourcetypeid='6', sourcetypename='FLOAT')  SORTABLE,
+        declaratiebedrag_std = 'DECLARATIEBEDRAG_STD' :'java.lang.Double' (OPT) (sourcetyperadix='10', sourcetypesize='126', sourcetypeid='6', sourcetypename='FLOAT')  SORTABLE,
+        honorariumbedrag_std = 'HONORARIUMBEDRAG_STD' :'java.lang.Double' (OPT) (sourcetyperadix='10', sourcetypesize='126', sourcetypeid='6', sourcetypename='FLOAT')  SORTABLE,
+        declaratiebedrag_pass = 'DECLARATIEBEDRAG_PASS' :'java.lang.Double' (OPT) (sourcetyperadix='10', sourcetypesize='126', sourcetypeid='6', sourcetypename='FLOAT')  SORTABLE,
+        verrichting_opbrengstbedrag = 'VERRICHTING_OPBRENGSTBEDRAG' :'java.lang.Double' (OPT) (sourcetyperadix='10', sourcetypesize='126', sourcetypeid='6', sourcetypename='FLOAT')  SORTABLE,
+        verpleegteamcode = 'VERPLEEGTEAMCODE' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='4000', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        expirationdate = 'EXPIRATIONDATE' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='38', sourcetypeid='3', sourcetypename='NUMBER')  SORTABLE,
+        rowstatus = 'ROWSTATUS' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='255', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE
+    );
+
+CREATE OR REPLACE TABLE c_c_v_uitgev_ve8665799763604 I18N us_pst (
+        uitgevoerde_verrichtingsnummer:text (sourcetypeid = '-9', sourcetyperadix = '10', sourcetypesize = '10'), 
+        statuscode:long (sourcetypeid = '-5', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'), 
+        patientnummer:text (sourcetypeid = '-9', sourcetyperadix = '10', sourcetypesize = '13'), 
+        leeftijd_patient:decimal (sourcetypeid = '3', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '20'), 
+        verrichtingscode:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '4000'), 
+        dbc_nummer:text (sourcetypeid = '-9', sourcetyperadix = '10', sourcetypesize = '10'), 
+        referentienummer:text (sourcetypeid = '-9', sourcetyperadix = '10', sourcetypesize = '10'), 
+        aantal_malen_uitgevoerd:long (sourcetypeid = '-5', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'), 
+        verrichtingsdatum:timestamp (sourcetypeid = '93', sourcetyperadix = '10', sourcetypedecimals = '3', sourcetypesize = '11'), 
+        verrichtingsmaand:decimal (sourcetypeid = '3', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '20'), 
+        verrichtingsjaar:decimal (sourcetypeid = '3', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '20'), 
+        aanvr_zorgverlenerscode:text (sourcetypeid = '-9', sourcetyperadix = '10', sourcetypesize = '10'), 
+        aanvr_specialismecode:text (sourcetypeid = '-9', sourcetyperadix = '10', sourcetypesize = '5'), 
+        prod_zorgverlenerscode:text (sourcetypeid = '-9', sourcetyperadix = '10', sourcetypesize = '10'), 
+        prod_specialismecode:text (sourcetypeid = '-9', sourcetyperadix = '10', sourcetypesize = '5'), 
+        productieplekcode:text (sourcetypeid = '-9', sourcetyperadix = '10', sourcetypesize = '10'), 
+        factuurnummer:text (sourcetypeid = '-9', sourcetyperadix = '10', sourcetypesize = '10'), 
+        tariefafdelingcode:text (sourcetypeid = '-9', sourcetyperadix = '10', sourcetypesize = '4'), 
+        declaratiecode:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '4000'), 
+        invoerdatum:timestamp (sourcetypeid = '93', sourcetyperadix = '10', sourcetypedecimals = '3', sourcetypesize = '11'), 
+        ziekenhuislocatie:text (sourcetypeid = '-9', sourcetyperadix = '10', sourcetypesize = '3'), 
+        type_code:text (sourcetypeid = '-9', sourcetyperadix = '10', sourcetypesize = '2'), 
+        bron:text (sourcetypeid = '-9', sourcetyperadix = '10', sourcetypesize = '4'), 
+        instantiegroepcode:text (sourcetypeid = '-9', sourcetyperadix = '10', sourcetypesize = '6'), 
+        instantiecode:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '4000'), 
+        aantal_verstrekt:double (sourcetypeid = '8', sourcetyperadix = '10', sourcetypesize = '126'), 
+        inkoophoeveelheid:double (sourcetypeid = '8', sourcetyperadix = '10', sourcetypesize = '126'), 
+        declaratiebedrag:double (sourcetypeid = '8', sourcetyperadix = '10', sourcetypesize = '126'), 
+        honorariumbedrag:double (sourcetypeid = '8', sourcetyperadix = '10', sourcetypesize = '126'), 
+        declaratiebedrag_std:double (sourcetypeid = '8', sourcetyperadix = '10', sourcetypesize = '126'), 
+        honorariumbedrag_std:double (sourcetypeid = '8', sourcetyperadix = '10', sourcetypesize = '126'), 
+        declaratiebedrag_pass:double (sourcetypeid = '8', sourcetyperadix = '10', sourcetypesize = '126'), 
+        verrichting_opbrengstbedrag:double (sourcetypeid = '8', sourcetyperadix = '10', sourcetypesize = '126'), 
+        verpleegteamcode:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '4000'), 
+        expirationdate:decimal (sourcetypeid = '3', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '38'), 
+        rowstatus:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '255')
+    )
+    FOLDER = '/d01e02 - joins/2. base views'
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD c_c_v_uitgev_ve8665799763604(
+        I18N us_pst
+        CONSTRAINTS (
+             ADD uitgevoerde_verrichtingsnummer (any) OPT ANY
+             ADD statuscode (any) OPT ANY
+             ADD patientnummer (any) OPT ANY
+             ADD leeftijd_patient (any) OPT ANY
+             ADD verrichtingscode (any) OPT ANY
+             ADD dbc_nummer (any) OPT ANY
+             ADD referentienummer (any) OPT ANY
+             ADD aantal_malen_uitgevoerd (any) OPT ANY
+             ADD verrichtingsdatum (any) OPT ANY
+             ADD verrichtingsmaand (any) OPT ANY
+             ADD verrichtingsjaar (any) OPT ANY
+             ADD aanvr_zorgverlenerscode (any) OPT ANY
+             ADD aanvr_specialismecode (any) OPT ANY
+             ADD prod_zorgverlenerscode (any) OPT ANY
+             ADD prod_specialismecode (any) OPT ANY
+             ADD productieplekcode (any) OPT ANY
+             ADD factuurnummer (any) OPT ANY
+             ADD tariefafdelingcode (any) OPT ANY
+             ADD declaratiecode (any) OPT ANY
+             ADD invoerdatum (any) OPT ANY
+             ADD ziekenhuislocatie (any) OPT ANY
+             ADD type_code (any) OPT ANY
+             ADD bron (any) OPT ANY
+             ADD instantiegroepcode (any) OPT ANY
+             ADD instantiecode (any) OPT ANY
+             ADD aantal_verstrekt (any) OPT ANY
+             ADD inkoophoeveelheid (any) OPT ANY
+             ADD declaratiebedrag (any) OPT ANY
+             ADD honorariumbedrag (any) OPT ANY
+             ADD declaratiebedrag_std (any) OPT ANY
+             ADD honorariumbedrag_std (any) OPT ANY
+             ADD declaratiebedrag_pass (any) OPT ANY
+             ADD verrichting_opbrengstbedrag (any) OPT ANY
+             ADD verpleegteamcode (any) OPT ANY
+             ADD expirationdate (any) OPT ANY
+             ADD rowstatus (any) OPT ANY
+        )
+        OUTPUTLIST (aantal_malen_uitgevoerd, aantal_verstrekt, aanvr_specialismecode, aanvr_zorgverlenerscode, bron, dbc_nummer, declaratiebedrag, declaratiebedrag_pass, declaratiebedrag_std, declaratiecode, expirationdate, factuurnummer, honorariumbedrag, honorariumbedrag_std, inkoophoeveelheid, instantiecode, instantiegroepcode, invoerdatum, leeftijd_patient, patientnummer, prod_specialismecode, prod_zorgverlenerscode, productieplekcode, referentienummer, rowstatus, statuscode, tariefafdelingcode, type_code, uitgevoerde_verrichtingsnummer, verpleegteamcode, verrichting_opbrengstbedrag, verrichtingscode, verrichtingsdatum, verrichtingsjaar, verrichtingsmaand, ziekenhuislocatie
+        )
+        WRAPPER (jdbc c_c_v_uitgev_ve8665799763604)
+    );
+

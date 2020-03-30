@@ -1,0 +1,32 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE WRAPPER JDBC vdb_cache_sequences
+    FOLDER = '/d01e02 - joins/2. base views'
+    DATASOURCENAME=ds_human_resources
+    SCHEMANAME='${databases.denodo_training1.folder.d01e02 - joins.folder.2.. base views.views.jdbc.vdb_cache_sequences.SCHEMANAME}' 
+    RELATIONNAME='VDB_CACHE_SEQUENCES' 
+    OUTPUTSCHEMA (
+        sequencename = 'SEQUENCENAME' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='255', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        loweridentifier = 'LOWERIDENTIFIER' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='38', sourcetypeid='3', sourcetypename='NUMBER')  SORTABLE,
+        blocksize = 'BLOCKSIZE' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='38', sourcetypeid='3', sourcetypename='NUMBER')  SORTABLE
+    );
+
+CREATE OR REPLACE TABLE vdb_cache_sequences I18N us_pst (
+        sequencename:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '255'), 
+        loweridentifier:decimal (sourcetypeid = '3', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '38'), 
+        blocksize:decimal (sourcetypeid = '3', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '38')
+    )
+    FOLDER = '/d01e02 - joins/2. base views'
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD vdb_cache_sequences(
+        I18N us_pst
+        CONSTRAINTS (
+             ADD sequencename (any) OPT ANY
+             ADD loweridentifier (any) OPT ANY
+             ADD blocksize (any) OPT ANY
+        )
+        OUTPUTLIST (blocksize, loweridentifier, sequencename
+        )
+        WRAPPER (jdbc vdb_cache_sequences)
+    );
+

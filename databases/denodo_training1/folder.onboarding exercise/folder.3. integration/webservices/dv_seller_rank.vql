@@ -1,0 +1,24 @@
+﻿CREATE OR REPLACE REST WEBSERVICE dv_seller_rank
+    CONNECTION (
+        CHUNKSIZE = 1000
+        CHUNKTIMEOUT = 90000
+        QUERYTIMEOUT = 900000
+        POOLENABLED = true
+        POOLINITSIZE = 0
+        POOLMAXACTIVE = 30
+    )
+    DEFAULTREPRESENTATION = HTML
+    SUPPORTEDREPRESENTATIONS (HTML, XML, JSON)
+    RESOURCES (
+        VIEW dv_seller_rank FIELDS (
+            category : 'text' OBL, 
+            rank : 'long', 
+            "SellerId" : 'text', 
+            "TotalAmount" : 'int'
+        )
+    )
+    OPTIONS ( NULLVALUESASEMPTYXMLELEMENTS = false
+        PROCESS_FUNCTIONS_IN_SELECT_PARAMETER = true ) 
+    OPENAPI2 ( API_VERSION = '1.0.0' ) 
+    FOLDER = '/onboarding exercise/3. integration';
+

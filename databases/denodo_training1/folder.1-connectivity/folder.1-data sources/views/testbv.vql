@@ -1,0 +1,36 @@
+﻿CREATE OR REPLACE WRAPPER JDBC testbv
+    FOLDER = '/1-connectivity/1-data sources'
+    DATASOURCENAME=ds_web_orders
+    SQLSENTENCE='select * from WEBSITE_SYS.STOCK where product_id < ''@prodid'''   
+    OUTPUTSCHEMA (
+        id = 'ID' :'java.math.BigDecimal' (sourcetypeid='2', sourcetypename='NUMBER')  NOT NULL SORTABLE NOT UPDATEABLE,
+        product_id = 'PRODUCT_ID' :'java.math.BigDecimal' (sourcetypeid='2', sourcetypename='NUMBER')  NOT NULL SORTABLE NOT UPDATEABLE,
+        distribution_code = 'DISTRIBUTION_CODE' :'java.lang.String' (sourcetypedecimals='0', sourcetypesize='100', sourcetypeid='12', sourcetypename='VARCHAR2')  NOT NULL SORTABLE NOT UPDATEABLE,
+        storage_id = 'STORAGE_ID' :'java.math.BigDecimal' (sourcetypeid='2', sourcetypename='NUMBER')  NOT NULL SORTABLE NOT UPDATEABLE,
+        prodid = 'PRODID' :'java.lang.String' (OBL) (DEFAULTVALUE='10')  EXTERN SORTABLE
+    );
+
+CREATE OR REPLACE TABLE testbv I18N us_pst (
+        id:decimal (sourcetypeid = '3'), 
+        product_id:decimal (sourcetypeid = '3'), 
+        distribution_code:text (sourcetypeid = '12', sourcetypedecimals = '0', sourcetypesize = '100'), 
+        storage_id:decimal (sourcetypeid = '3'), 
+        prodid:text (extern)
+    )
+    FOLDER = '/1-connectivity/1-data sources'
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD testbv(
+        I18N us_pst
+        CONSTRAINTS (
+             ADD id NOS ZERO ()
+             ADD product_id NOS ZERO ()
+             ADD distribution_code NOS ZERO ()
+             ADD storage_id NOS ZERO ()
+             ADD prodid (=) OBL ONE
+        )
+        OUTPUTLIST (distribution_code, id, product_id, storage_id
+        )
+        WRAPPER (jdbc testbv)
+    );
+
