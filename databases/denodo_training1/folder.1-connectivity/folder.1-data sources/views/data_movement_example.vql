@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE VIEW data_movement_example FOLDER = '/1-connectivity/1-data sources' AS SELECT bv_countries_1.country_id AS country_id, bv_countries_1.country_name AS country_name, count(*) AS customer_counts FROM bv_countries_1 AS bv_countries_1 INNER JOIN bv_wo_customer AS bv_wo_customer ON bv_countries_1.country_name = bv_wo_customer.main_country  GROUP BY bv_countries_1.country_id, bv_countries_1.country_name CONTEXT (DATAMOVEMENTPLAN = bv_wo_customer : JDBC ds_crm);
+
+ALTER VIEW data_movement_example
+ LAYOUT (bv_countries_1 = [20, 40, 200, 86], bv_wo_customer = [330, 30, 200, 225]);
+

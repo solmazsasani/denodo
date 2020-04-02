@@ -24,8 +24,9 @@ CREATE OR REPLACE DATASOURCE JDBC ds_web_orders
     POOLPREPAREDSTATEMENTS = false
     MAXSLEEPINGPS = 4
     INITIALCAPACITYPS = 8
-    PROPERTIES ('remarksReporting'='false', 'includeSynonyms'='false')
+    PROPERTIES ('includeSynonyms'='false', 'remarksReporting'='false')
     DATA_LOAD_CONFIGURATION (
+        USE_FOR_QUERY_OPTIMIZATION = DATA_MOVEMENT
         BATCHINSERTSIZE = 200
     )
     SOURCECONFIGURATION (
